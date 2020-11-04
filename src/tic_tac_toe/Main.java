@@ -62,6 +62,11 @@ public class Main {
         else if(board[2] == board[4] && board[2] == board[6] && board[2] != '-'){
             winner = board[2];
         }
+        if(winner == 88){ // wegen ASCII
+            winner = 1;
+        }else if(winner == 79){
+            winner = 2;
+        }
         return winner;
     }
     public static void printBoard(char[] meinBoard){

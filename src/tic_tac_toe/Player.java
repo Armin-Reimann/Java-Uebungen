@@ -4,15 +4,21 @@ import java.util.*;
 public class Player {
     int number;
     boolean bot = false;
+    String name = "false";
     Scanner scanner = new Scanner(System.in);
     public Player(int number){
         this.number = number;
     }
     public void setBot(){
         this.bot = true;
+        this.name = "Bot";
     }
     public int getTurn(char[] board){
-        System.out.println("Spieler " + number + " - du bist am Zug!");
+        if(!this.name.equals("false")){
+            System.out.println(name + " - du bist am Zug!");
+        }else{
+            System.out.println("Spieler " + number + " - du bist am Zug!");
+        }
         if(this.bot){
             return this.getBotTurn(board);
         }else{
@@ -34,6 +40,9 @@ public class Player {
         }
         System.out.println("Bot hat Zug gemacht");
         return freieFelder.get(new Random().nextInt(freieFelder.size()));
+    }
+    public void setName(String name){
+        this.name = name;
     }
     public boolean validateTurn(char[] board, int turn){
         return board[turn] == '-';

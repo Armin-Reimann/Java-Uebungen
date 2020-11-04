@@ -13,10 +13,15 @@ public class Main {
         Arrays.fill(board, '-');
         Player a = new Player(0);
         Player b = new Player(1);
+        System.out.println("Namen für ersten Spieler eingeben!");
+        a.setName(scanner.next());
         System.out.println("Gegen einen Bot spielen? [j/n]");
         String b_bot = scanner.next();
         if(b_bot.equals("j")){
             b.setBot();
+        }else{
+            System.out.println("Namen für zweiten Spieler eingeben!");
+            b.setName(scanner.next());
         }
         Player[] players = new Player[2];
         players[0] = a;

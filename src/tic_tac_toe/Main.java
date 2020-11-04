@@ -1,6 +1,7 @@
 package tic_tac_toe;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,17 +9,22 @@ public class Main {
         int turn = 0;
         int winner = -1;
         char[] board = new char[9]; //Array mit 9 Feldern
-        //For Schleife
+        Scanner scanner = new Scanner(System.in);
         Arrays.fill(board, '-');
         Player a = new Player(0);
         Player b = new Player(1);
+        System.out.println("Gegen einen Bot spielen? [j/n]");
+        String b_bot = scanner.next();
+        if(b_bot.equals("j")){
+            b.setBot();
+        }
         Player[] players = new Player[2];
         players[0] = a;
         players[1] = b;
 
         while(winner == -1){
             printBoard(board);
-            int turnField = players[turn].getTurn();
+            int turnField = players[turn].getTurn(board);
             if(players[turn].validateTurn(board, turnField)){
                 if(players[turn].number == 0){
                     board[turnField] = 'O';

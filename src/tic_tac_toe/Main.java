@@ -36,13 +36,17 @@ public class Main {
                 }else{
                     board[turnField] = 'X';
                 }
-
                 //modulo! 0 1 0 1 0 1 ... da nur zwei Spieler
                 turn = ( turn + 1) % 2;
             }
             winner = checkWinner(board);
         }
-        System.out.println("Spieler " + winner + " hat gewonnen!");
+        if(winner == 0){
+            System.out.println(a.name + " hat gewonnen!");
+        }else{
+            System.out.println(b.name + " hat gewonnen!");
+        }
+
     }
     public static int checkWinner(char[] board){
         //Horizontal (Zeilen)

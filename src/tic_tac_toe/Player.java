@@ -38,7 +38,7 @@ public class Player {
                 freieFelder.add(i);
             }
         }
-        System.out.println("Bot hat Zug gemacht");
+        System.out.println("Der Bot hat einen Zug gemacht");
         return freieFelder.get(new Random().nextInt(freieFelder.size()));
     }
     public void setName(String name){

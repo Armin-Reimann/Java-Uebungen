@@ -5,6 +5,7 @@ public class Player {
     int number;
     boolean bot = false;
     String name = "false";
+    int schwierigkeit;
     Scanner scanner = new Scanner(System.in);
     public Player(int number){
         this.number = number;
@@ -12,6 +13,9 @@ public class Player {
     public void setBot(){
         this.bot = true;
         this.name = "Bot";
+    }
+    public void setSchwierigkeit(int schwierigkeit){
+        this.schwierigkeit = schwierigkeit;
     }
     public int getTurn(char[] board){
         if(!this.name.equals("false")){
@@ -38,6 +42,11 @@ public class Player {
                 freieFelder.add(i);
             }
         }
+        if(schwierigkeit == 2){
+            for(int i=0;i<freieFelder.size();i++){
+
+            }
+        }
         System.out.println("Der Bot hat einen Zug gemacht");
         return freieFelder.get(new Random().nextInt(freieFelder.size()));
     }
@@ -47,4 +56,5 @@ public class Player {
     public boolean validateTurn(char[] board, int turn){
         return board[turn] == '-';
     }
+
 }

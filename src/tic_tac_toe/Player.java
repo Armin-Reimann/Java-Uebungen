@@ -1,6 +1,6 @@
 package tic_tac_toe;
 
-import java.util.Scanner;
+import java.util.*;
 public class Player {
     int number;
     boolean bot = false;
@@ -26,10 +26,15 @@ public class Player {
 
     }
     protected int getBotTurn(char[] board){
+        ArrayList<Integer> freieFelder = new ArrayList<Integer>();
         for(int i=0;i<board.length;i++){
             System.out.println(board[i]);
+            if(board[i] == '-'){
+                freieFelder.add(i);
+            }
         }
-        return 1;
+        System.out.println("Bot hat Zug gemacht");
+        return freieFelder.get(new Random().nextInt(freieFelder.size()));
     }
     public boolean validateTurn(char[] board, int turn){
         return board[turn] == '-';

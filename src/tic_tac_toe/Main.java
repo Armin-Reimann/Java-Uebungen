@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         // Hier wird der Spieler gespeichert, der gerade am Zug ist
         int turn = 0;
-        int winner = -1;
+        int winner = -2;
         char[] leer = new char[1];
         leer[0] = 'f';
         Board board = new Board(leer);
@@ -30,7 +30,7 @@ public class Main {
         players[0] = a;
         players[1] = b;
 
-        while(winner == -1){
+        while(winner == -2){
             System.out.println("winner:");
             System.out.println(winner);
             printBoard(board.getInhalt());
@@ -40,6 +40,8 @@ public class Main {
 //                System.out.println(turnField);
 //                break;
 //            }
+            //todo anscheinend kann man ein Objekt während der Schleife nicht verändern, deswegen alle sachen vorher mit getInhalt holen,
+            // und dann in der schleife nur temporär bearbeiten, damit man es dann später mit einer set-Methode wieder setzen kann
             if(players[turn].validateTurn(board.getInhalt(), turnField)){
                 if(players[turn].number == 0){
                     board.setInhalt(turnField, 'O');

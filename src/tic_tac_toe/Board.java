@@ -7,6 +7,7 @@ public class Board {
     char[] board;
     public Board(char[] inhalt){
         board = new char[9];
+        System.out.println("scheisse");
         if(inhalt[0] != 'f'){
             board = inhalt;
         }
@@ -16,7 +17,9 @@ public class Board {
         return board;
     }
     public void setInhalt(int index, char inhalt){
-        board[index] = inhalt;
+        System.out.println(board);
+        this.board[index] = inhalt;
+        System.out.println(board);
     }
     public int[] getFreieFelder(){
         ArrayList<Integer> freieFelder = new ArrayList<Integer>();

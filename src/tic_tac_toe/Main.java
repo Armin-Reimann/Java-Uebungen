@@ -8,7 +8,9 @@ public class Main {
         // Hier wird der Spieler gespeichert, der gerade am Zug ist
         int turn = 0;
         int winner = -1;
-        Board board = new Board();
+        char[] leer = new char[1];
+        leer[0] = 'f';
+        Board board = new Board(leer);
         Scanner scanner = new Scanner(System.in);
         Player a = new Player(0);
         Player b = new Player(1);
@@ -31,6 +33,9 @@ public class Main {
         while(winner == -1){
             printBoard(board.getInhalt());
             int turnField = players[turn].getTurn(board.getInhalt());
+            if (turnField == -1){
+                break;
+            }
             if(players[turn].validateTurn(board.getInhalt(), turnField)){
                 if(players[turn].number == 0){
                     board.setInhalt(turnField, 'O');
@@ -44,8 +49,12 @@ public class Main {
         }
         if(winner == 0){
             System.out.println(a.name + " hat gewonnen!");
-        }else{
+        }else if (winner == 1){
             System.out.println(b.name + " hat gewonnen!");
+        }else if(winner == -1){
+            System.out.println("Unentschieden!");
+        }else{
+            System.out.println("FEHLER");
         }
     }
 

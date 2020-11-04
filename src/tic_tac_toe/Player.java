@@ -17,38 +17,35 @@ public class Player {
     public void setSchwierigkeit(int schwierigkeit){
         this.schwierigkeit = schwierigkeit;
     }
-    public int getTurn(char[] board){
+    public int getTurn(char[] boardInhalt){
+        int turn;
+        Board board = new Board(boardInhalt);
+
         if(!this.name.equals("false")){
             System.out.println(name + " - du bist am Zug!");
         }else{
             System.out.println("Spieler " + number + " - du bist am Zug!");
         }
-        if(this.bot){
-            return this.getBotTurn(board);
+        if(board.getFreieFelder() == null){
+            return -1;
         }else{
-            int input = scanner.nextInt();
-            if(input < 9 && input >= 0){
-                return input;
+            if(this.bot){
+                turn = this.getBotTurn(board.getFreieFelder());
+            }else{
+                int input = scanner.nextInt();
+                if(input < 9 && input >= 0){
+                    turn = input;
+                }else {
+                    System.out.println("Ungültige Eingabe, bitte nochmal probieren.");
+                    return getTurn(board.getInhalt());
+                }
             }
-            System.out.println("Ungültige Eingabe, bitte nochmal probieren.");
-            return getTurn(board);
+            return turn;
         }
-
     }
-    protected int getBotTurn(char[] board){
-        ArrayList<Integer> freieFelder = new ArrayList<Integer>();
-        for(int i=0;i<board.length;i++){
-            if(board[i] == '-'){
-                freieFelder.add(i);
-            }
-        }
-        if(schwierigkeit == 2){
-            for(int i=0;i<freieFelder.size();i++){
-
-            }
-        }
+    protected int getBotTurn(int[] freieFelder){
         System.out.println("Der Bot hat einen Zug gemacht");
-        return freieFelder.get(new Random().nextInt(freieFelder.size()));
+        return freieFelder[new Random().nextInt(freieFelder.length)];
     }
     public void setName(String name){
         this.name = name;

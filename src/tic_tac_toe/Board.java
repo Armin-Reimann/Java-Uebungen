@@ -1,11 +1,15 @@
 package tic_tac_toe;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board {
     char[] board;
-    public Board(){
+    public Board(char[] inhalt){
         board = new char[9];
+        if(inhalt[0] != 'f'){
+            board = inhalt;
+        }
         Arrays.fill(board, '-');
     }
     public char[] getInhalt(){
@@ -14,9 +18,30 @@ public class Board {
     public void setInhalt(int index, char inhalt){
         board[index] = inhalt;
     }
+    public int[] getFreieFelder(){
+        ArrayList<Integer> freieFelder = new ArrayList<Integer>();
+        for(int i=0;i<board.length;i++){
+            if(board[i] == '-'){
+                freieFelder.add(i);
+            }
+        }
+        if(freieFelder.size() == 0){
+            return null;
+        }
+//        if(schwierigkeit == 2){
+//            for(int i=0;i<freieFelder.size();i++){
+//
+//            }
+//        }
+        int[] freieFelderArray = new int[freieFelder.size()];
+        for(int i = 0; i < freieFelder.size(); i++) {
+            freieFelderArray[i] = freieFelder.get(i);
+        }
+        return freieFelderArray;
+    }
     protected int checkWinner(){
         //Horizontal (Zeilen)
-        int winner = -1;
+        int winner = -2;
         if(board[0] == board[1] && board[0] == board[2] && board[0] != '-'){
             winner = board[0];
         }

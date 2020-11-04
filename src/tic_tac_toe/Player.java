@@ -16,8 +16,8 @@ public class Player {
         System.out.println("Ungültige Eingabe, bitte nochmal probieren.");
         return getTurn();
     }
-    public boolean validateTurn(int[] board, int turn){
-        if(board[turn] == -1) {
+    public boolean validateTurn(char[] board, int turn){
+        if(board[turn] == '-') {
             return true;
         }
         return false;

@@ -28,7 +28,6 @@ public class Player {
     protected int getBotTurn(char[] board){
         ArrayList<Integer> freieFelder = new ArrayList<Integer>();
         for(int i=0;i<board.length;i++){
-            System.out.println(board[i]);
             if(board[i] == '-'){
                 freieFelder.add(i);
             }

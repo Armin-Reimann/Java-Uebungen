@@ -71,7 +71,7 @@ public class Main {
         if(winner == 88){ // wegen ASCII
             winner = 1;
         }else if(winner == 79){
-            winner = 2;
+            winner = 0;
         }
         return winner;
     }

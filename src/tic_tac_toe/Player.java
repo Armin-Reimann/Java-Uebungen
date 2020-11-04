@@ -27,7 +27,7 @@ public class Player {
             System.out.println("Spieler " + number + " - du bist am Zug!");
         }
         if(board.getFreieFelder() == null){
-            return -1;
+            return -10;
         }else{
             if(this.bot){
                 turn = this.getBotTurn(board.getFreieFelder());

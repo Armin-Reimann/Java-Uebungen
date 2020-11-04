@@ -31,11 +31,15 @@ public class Main {
         players[1] = b;
 
         while(winner == -1){
+            System.out.println("winner:");
+            System.out.println(winner);
             printBoard(board.getInhalt());
             int turnField = players[turn].getTurn(board.getInhalt());
-            if (turnField == -1){
-                break;
-            }
+//            if (turnField == -10){
+//                System.out.println("turnField");
+//                System.out.println(turnField);
+//                break;
+//            }
             if(players[turn].validateTurn(board.getInhalt(), turnField)){
                 if(players[turn].number == 0){
                     board.setInhalt(turnField, 'O');
@@ -47,15 +51,16 @@ public class Main {
             }
             winner = board.checkWinner();
         }
+        System.out.println("winner2:");
+        System.out.println(winner);
         if(winner == 0){
             System.out.println(a.name + " hat gewonnen!");
         }else if (winner == 1){
             System.out.println(b.name + " hat gewonnen!");
-        }else if(winner == -1){
-            System.out.println("Unentschieden!");
-        }else{
-            System.out.println("FEHLER");
         }
+//        else if(winner == -1){
+//            System.out.println("Unentschieden!");
+//        }
     }
 
     public static void printBoard(char[] meinBoard){

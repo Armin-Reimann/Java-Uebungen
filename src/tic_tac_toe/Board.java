@@ -103,7 +103,7 @@ public class Board {
 //    }
      
     protected static int checkWinner(char[][] board){
-        int winner = -1;
+        int winner = -2;
         //horizontal
         if(board[0][0] == board[0][1] && board[0][0] == board[0][2] && board[0][0] != '-'){
             winner = board[0][0];

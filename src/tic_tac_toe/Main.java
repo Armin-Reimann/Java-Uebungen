@@ -53,7 +53,7 @@ public class Main {
         }else if (winner == 1){
             System.out.println(b.name + " hat gewonnen!");
         }
-        else if(winner == -2){
+        else if(winner == -2 || winner == -1){
             System.out.println("Unentschieden!");
         }
     }

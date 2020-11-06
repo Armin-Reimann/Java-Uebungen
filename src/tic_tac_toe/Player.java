@@ -109,13 +109,13 @@ public class Player {
     }
     protected int[] getBestMove(char[][] board){
         double bestScore = Double.NEGATIVE_INFINITY;
-        double score = Double.NEGATIVE_INFINITY;
+        double score = 0;
         int[] move = new int[2];
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
                 if (board[i][j] == '-'){
-                    board[i][j] = 'a';
-                    score = minimax(board, 0, true);
+                    board[i][j] = 'X';
+                    score = minimax(board, 0, false);
                     System.out.println("score:"+score);
                     board[i][j] = '-';
                     if(score > bestScore){
@@ -130,9 +130,18 @@ public class Player {
         return move;
     }
 
+    /**
+     * DEBUG:
+     * - es kommt nie zu einem Unentschieden
+     * @param board
+     * @param depth
+     * @param isMaximazing
+     * @return
+     */
     protected double minimax(char[][] board, int depth, boolean isMaximazing){
         int result = Board.checkWinner(board);
-        double score = 0;
+//        System.out.println("depth: "+depth);
+        double score;
         if(result != -2){
             // Der erste Spieler ist immer 0
             // Der Bot ist immer 1
@@ -140,20 +149,24 @@ public class Player {
                 score = 1;
             }else if (result == 0){
                 score = -1;
+            }else{
+                score = 0;
             }
+
+
             return score;
         }
         if(isMaximazing){
+
             double bestScore = Double.NEGATIVE_INFINITY;
             for (int i = 0; i < 3; i++){
                 for (int j = 0; j < 3; j++){
                     if (board[i][j] == '-'){
-                        board[i][j] = 'a';
+                        board[i][j] = 'X';
+//                        Main.printBoard(board);
                         score = minimax(board, depth+1, false);
                         board[i][j] = '-';
-                        if(score > bestScore){
-                            bestScore = score;
-                        }
+                        bestScore = Math.max(score,bestScore);
                     }
                 }
             }
@@ -163,12 +176,11 @@ public class Player {
             for (int i = 0; i < 3; i++){
                 for (int j = 0; j < 3; j++){
                     if (board[i][j] == '-'){
-                        board[i][j] = 'h';
+                        board[i][j] = 'O';
+//                        Main.printBoard(board);
                         score = minimax(board, depth+1, true);
                         board[i][j] = '-';
-                        if(score < bestScore){
-                            bestScore = score;
-                        }
+                        bestScore = Math.min(score, bestScore);
                     }
                 }
             }

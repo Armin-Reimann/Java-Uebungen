@@ -83,6 +83,9 @@ public class Board {
             winner = 1;
         }else if(winner == 79){
             winner = 0;
+        }else if (Board.getFreieFelder(board) == 0){
+            //unentschieden
+            winner = -1;
         }
         return winner;
     }

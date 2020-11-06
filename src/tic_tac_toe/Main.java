@@ -50,8 +50,6 @@ public class Main {
             }
             winner = Board.checkWinner(tempboard);
         }
-        System.out.println("winner2:");
-        System.out.println(winner);
         if(winner == 0){
             System.out.println(a.name + " hat gewonnen!");
         }else if (winner == 1){

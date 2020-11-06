@@ -36,8 +36,9 @@ public class Main {
             System.out.println(winner);
             printBoard(board.getInhalt());
             int[] turnField = players[turn].getTurn(board.getInhalt());
-            //todo anscheinend kann man ein Objekt während der Schleife nicht verändern, deswegen alle sachen vorher mit getInhalt holen,
-            // und dann in der schleife nur temporär bearbeiten, damit man es dann später mit einer set-Methode wieder setzen kann
+            if (turnField == null){
+                break;
+            }
             if(players[turn].validateTurn(board.getInhalt(), turnField)){
                 if(players[turn].number == 0){
                     tempboard[turnField[0]][turnField[1]] = 'O';

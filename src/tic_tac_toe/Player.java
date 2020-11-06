@@ -106,7 +106,15 @@ public class Player {
         this.name = name;
     }
     public boolean validateTurn(char[][] board, int[] turn){
-        return board[turn[0]][turn[1]] == '-';
+        try {
+            //  Block of code to try
+            return board[turn[0]][turn[1]] == '-';
+        }
+        catch(Exception e) {
+            System.out.println("Fehler in Player.java funktion validateTurn()");
+            return false;
+        }
+//        return board[turn[0]][turn[1]] == '-';
     }
 
 }

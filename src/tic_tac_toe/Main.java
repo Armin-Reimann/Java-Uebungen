@@ -36,20 +36,13 @@ public class Main {
             System.out.println(winner);
             printBoard(board.getInhalt());
             int[] turnField = players[turn].getTurn(board.getInhalt());
-//            if (turnField == -10){
-//                System.out.println("turnField");
-//                System.out.println(turnField);
-//                break;
-//            }
             //todo anscheinend kann man ein Objekt während der Schleife nicht verändern, deswegen alle sachen vorher mit getInhalt holen,
             // und dann in der schleife nur temporär bearbeiten, damit man es dann später mit einer set-Methode wieder setzen kann
             if(players[turn].validateTurn(board.getInhalt(), turnField)){
                 if(players[turn].number == 0){
                     tempboard[turnField[0]][turnField[1]] = 'O';
-//                    board.setInhalt(turnField, 'O');
                 }else{
                     tempboard[turnField[0]][turnField[1]] = 'X';
-//                    board.setInhalt(turnField, 'X');
                 }
                 //modulo! 0 1 0 1 0 1 ... da nur zwei Spieler
                 turn = ( turn + 1) % 2;
@@ -63,9 +56,9 @@ public class Main {
         }else if (winner == 1){
             System.out.println(b.name + " hat gewonnen!");
         }
-//        else if(winner == -1){
-//            System.out.println("Unentschieden!");
-//        }
+        else if(winner == -2){
+            System.out.println("Unentschieden!");
+        }
     }
 
     public static void printBoard(char[][] meinBoard){

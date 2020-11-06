@@ -97,6 +97,7 @@ public class Player {
             int[][] freieFelder = Board.getFreieFelderarray(board);
             return freieFelder[new Random().nextInt(freieFelder.length)];
         }else if(schwierigkeit == 2){
+            System.out.println("es ist an der richtigen stelle");
             int[] bestTurn = this.getBestMove(board);
             return bestTurn;
         }else{

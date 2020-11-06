@@ -9,6 +9,8 @@ public class Main {
         int turn = 0;
         int winner = -2;
         char[][] leer = new char[1][1];
+        String b_bot;
+        boolean check = false;
         leer[0][0] = 'f';
         Board board = new Board(leer);
         Scanner scanner = new Scanner(System.in);
@@ -16,16 +18,24 @@ public class Main {
         Player b = new Player(1);
         System.out.println("Namen für ersten Spieler eingeben!");
         a.setName(scanner.next());
-        System.out.println("Gegen einen Bot spielen? [j/n]");
-        String b_bot = scanner.next();
-        if(b_bot.equals("j")){
-            b.setBot();
-            System.out.println("Schwierigkeit einstellen: leicht(1) schwer(2)");
-            b.setSchwierigkeit(scanner.nextInt());
-        }else{
-            System.out.println("Namen für zweiten Spieler eingeben!");
-            b.setName(scanner.next());
+
+        while (!check){
+            System.out.println("Gegen einen Bot spielen? [j/n]");
+            b_bot = scanner.next();
+            if(b_bot.equals("j")){
+                b.setBot();
+                System.out.println("Schwierigkeit einstellen: leicht(1) schwer(2)");
+                b.setSchwierigkeit(scanner.nextInt());
+                check = true;
+            }else if(b_bot.equals("n")){
+                System.out.println("Namen für zweiten Spieler eingeben!");
+                b.setName(scanner.next());
+                check = true;
+            }else {
+                System.out.println("Falsche Eingabe, bitte wiederholen!");
+            }
         }
+
         Player[] players = new Player[2];
         players[0] = a;
         players[1] = b;
@@ -65,4 +75,5 @@ public class Main {
         System.out.println("____________");
         System.out.println(meinBoard[2][0] + " | " + meinBoard[2][1] + " | " + meinBoard[2][2]);
     }
+
 }

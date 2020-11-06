@@ -7,21 +7,27 @@ public class Player {
     String name = "false";
     int schwierigkeit;
     Scanner scanner = new Scanner(System.in);
+
     public Player(int number){
         this.number = number;
     }
+
     public void setBot(){
         this.bot = true;
         this.name = "Bot";
     }
+
     public void setSchwierigkeit(int schwierigkeit){
         this.schwierigkeit = schwierigkeit;
         System.out.println("schwierigkeit: "+this.schwierigkeit);
     }
-    public int[] getTurn(char[][] boardInhalt){
-        int[] turn = new int[2];
-//        Board board = new Board(boardInhalt);
 
+    /**
+     * @param boardInhalt das spielbrett
+     * @return Gibt einen einen Zug zurück
+     */
+    public int[] getTurn(char[][] boardInhalt){
+        int[] turn;
         if(!this.name.equals("false")){
             System.out.println(name + " - du bist am Zug!");
         }else{
@@ -29,7 +35,6 @@ public class Player {
         }
 
         if(Board.getFreieFelder(boardInhalt) == 0){
-//        if(board.getFreieFelder() == null){
             return null;
         }else{
             if(this.bot){
@@ -48,6 +53,12 @@ public class Player {
         }
 
     }
+
+    /**
+     * sorgt dafür, dass man als eingabe für tic tac toe die zahlen 0-8 nehmen kann
+     * @param input zahl zwischen 0 und 8
+     * @return stelle im array
+     */
     protected int [] convertInput(int input){
         int[] returnArray = new int[2];
         switch (input) {
@@ -91,6 +102,12 @@ public class Player {
         }
         return returnArray;
     }
+
+    /**
+     *
+     * @param board das spielbrett
+     * @return gibt alle Botzüge zurück (von allen Schwierigkeitsstufen)
+     */
     protected int[] getBotTurn(char[][] board){
         System.out.println("Der Bot hat einen Zug gemacht");
         if(schwierigkeit == 1){
@@ -98,8 +115,7 @@ public class Player {
             return freieFelder[new Random().nextInt(freieFelder.length)];
         }else if(schwierigkeit == 2){
             System.out.println("es ist an der richtigen stelle");
-            int[] bestTurn = this.getBestMove(board);
-            return bestTurn;
+            return this.getBestMove(board);
         }else{
             System.out.println("Fehler in Player.java funktion getBotTurn()");
             int[][] freieFelder = Board.getFreieFelderarray(board);
@@ -107,9 +123,15 @@ public class Player {
         }
 
     }
+
+    /**
+     * Startfunktion für den Minimax-Algorithmus
+     * @param board das spielbrett
+     * @return den besten zug, den der bot machen kann
+     */
     protected int[] getBestMove(char[][] board){
         double bestScore = Double.NEGATIVE_INFINITY;
-        double score = 0;
+        double score;
         int[] move = new int[2];
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
@@ -131,12 +153,11 @@ public class Player {
     }
 
     /**
-     * DEBUG:
-     * - es kommt nie zu einem Unentschieden
-     * @param board
-     * @param depth
-     * @param isMaximazing
-     * @return
+     * @param board das spielbrett
+     * @param depth aktuelle tiefe (wird interessant wenn man danach begrenzen will,
+     *              also wenn depth einen bestimmten wert erreicht hat soll er abbrechen)
+     * @param isMaximazing kommt als nächstes der Maximizer-Spieler oder der Minimizer-Spieler?
+     * @return gibt den score zurück, also ob man potzenziell bei diesem zug verliert oder gewinnt oder unentschieden herauskommt
      */
     protected double minimax(char[][] board, int depth, boolean isMaximazing){
         int result = Board.checkWinner(board);

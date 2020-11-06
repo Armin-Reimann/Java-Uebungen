@@ -1,7 +1,6 @@
 package tic_tac_toe;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class Board {
     char[][] board;
@@ -19,17 +18,14 @@ public class Board {
     public char[][] getInhalt(){
         return board;
     }
-    public void setInhalt(int zeile, int spalte, char inhalt){
-        this.board[zeile][spalte] = inhalt;
-    }
 
     protected static int getFreieFelder(char[][] board){
         // z steht für zeile und s für spalte
         int n_freieFelder = 0;
 
-        for (int z=0; z < board.length; z++){
-            for (int s=0; s < board[z].length; s++){
-                if(board[z][s] == '-'){
+        for (char[] chars : board) {
+            for (char aChar : chars) {
+                if (aChar == '-') {
                     n_freieFelder++;
                 }
             }

@@ -108,27 +108,69 @@ public class Player {
     protected int[] getBestMove(char[][] board){
         double bestScore = Double.NEGATIVE_INFINITY;
         double score = 0;
-        int[] bestMove = new int[2];
+        int[] move = new int[2];
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
                 if (board[i][j] == '-'){
                     board[i][j] = 'a';
-                    score = minimax(board);
+                    score = minimax(board, 0, true);
                     board[i][j] = '-';
                     if(score > bestScore){
                         bestScore = score;
-                        bestMove[0] = i;
-                        bestMove[1] = j;
+                        move[0] = i;
+                        move[1] = j;
                     }
 
                 }
             }
         }
-        return bestMove;
+        return move;
     }
 
-    protected int minimax(char[][] board){
-        return 1;
+    protected double minimax(char[][] board, int depth, boolean isMaximazing){
+        int result = Board.checkWinner(board);
+        double score = 0;
+        if(result != -2){
+            // Der erste Spieler ist immer 0
+            // Der Bot ist immer 1
+            if(result == 1){
+                score = 1;
+            }else if (result == 0){
+                score = -1;
+            }
+            return score;
+        }
+        if(isMaximazing){
+            double bestScore = Double.NEGATIVE_INFINITY;
+            for (int i = 0; i < 3; i++){
+                for (int j = 0; j < 3; j++){
+                    if (board[i][j] == '-'){
+                        board[i][j] = 'a';
+                        score = minimax(board, depth+1, false);
+                        board[i][j] = '-';
+                        if(score > bestScore){
+                            bestScore = score;
+                        }
+                    }
+                }
+            }
+            return bestScore;
+        }else{
+            double bestScore = Double.POSITIVE_INFINITY;
+            for (int i = 0; i < 3; i++){
+                for (int j = 0; j < 3; j++){
+                    if (board[i][j] == '-'){
+                        board[i][j] = 'h';
+                        score = minimax(board, depth+1, true);
+                        board[i][j] = '-';
+                        if(score < bestScore){
+                            bestScore = score;
+                        }
+                    }
+                }
+            }
+            return bestScore;
+        }
     }
     public void setName(String name){
         this.name = name;

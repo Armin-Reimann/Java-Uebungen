@@ -16,6 +16,7 @@ public class Player {
     }
     public void setSchwierigkeit(int schwierigkeit){
         this.schwierigkeit = schwierigkeit;
+        System.out.println("schwierigkeit: "+this.schwierigkeit);
     }
     public int[] getTurn(char[][] boardInhalt){
         int[] turn = new int[2];

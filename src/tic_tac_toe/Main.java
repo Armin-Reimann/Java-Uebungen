@@ -32,8 +32,6 @@ public class Main {
 
         char [][] tempboard = board.getInhalt();
         while(winner == -2){
-            System.out.println("winner:");
-            System.out.println(winner);
             printBoard(board.getInhalt());
             int[] turnField = players[turn].getTurn(board.getInhalt());
             if (turnField == null){

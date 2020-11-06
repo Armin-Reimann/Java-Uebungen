@@ -95,12 +95,40 @@ public class Player {
         if(schwierigkeit == 1){
             int[][] freieFelder = Board.getFreieFelderarray(board);
             return freieFelder[new Random().nextInt(freieFelder.length)];
+        }else if(schwierigkeit == 2){
+            int[] bestTurn = this.getBestMove(board);
+            return bestTurn;
         }else{
             System.out.println("Fehler in Player.java funktion getBotTurn()");
             int[][] freieFelder = Board.getFreieFelderarray(board);
             return freieFelder[new Random().nextInt(freieFelder.length)];
         }
 
+    }
+    protected int[] getBestMove(char[][] board){
+        double bestScore = Double.NEGATIVE_INFINITY;
+        double score = 0;
+        int[] bestMove = new int[2];
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
+                if (board[i][j] == '-'){
+                    board[i][j] = 'a';
+                    score = minimax(board);
+                    board[i][j] = '-';
+                    if(score > bestScore){
+                        bestScore = score;
+                        bestMove[0] = i;
+                        bestMove[1] = j;
+                    }
+
+                }
+            }
+        }
+        return bestMove;
+    }
+
+    protected int minimax(char[][] board){
+        return 1;
     }
     public void setName(String name){
         this.name = name;

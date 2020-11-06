@@ -1,9 +1,43 @@
 package hello_world;
 
-public class Hello {
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Hello extends JFrame {
+    public Hello(){
+        setTitle("Unsere GUI");
+        setSize(300,200);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        Container pane = getContentPane();
+        GroupLayout gl = new GroupLayout(pane);
+        pane.setLayout(gl);
+
+        JButton button = new JButton("test");
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        gl.setVerticalGroup(gl.createSequentialGroup().addComponent(button));
+        gl.setHorizontalGroup(gl.createSequentialGroup().addComponent(button));
+        gl.setAutoCreateContainerGaps(true);
+    }
     public static void main(String[] args)
     {
-        System.out.println("Hallo Welt");
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Hello m = new Hello();
+                m.setVisible(true);
+            }
+        });
+//        System.out.println("Hallo Welt");
     }
 }
 

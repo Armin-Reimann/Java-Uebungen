@@ -109,13 +109,14 @@ public class Player {
     }
     protected int[] getBestMove(char[][] board){
         double bestScore = Double.NEGATIVE_INFINITY;
-        double score = 0;
+        double score = Double.NEGATIVE_INFINITY;
         int[] move = new int[2];
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
                 if (board[i][j] == '-'){
                     board[i][j] = 'a';
                     score = minimax(board, 0, true);
+                    System.out.println("score:"+score);
                     board[i][j] = '-';
                     if(score > bestScore){
                         bestScore = score;

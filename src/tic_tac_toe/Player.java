@@ -19,7 +19,6 @@ public class Player {
 
     public void setSchwierigkeit(int schwierigkeit){
         this.schwierigkeit = schwierigkeit;
-        System.out.println("schwierigkeit: "+this.schwierigkeit);
     }
 
     /**
@@ -114,7 +113,6 @@ public class Player {
             int[][] freieFelder = Board.getFreieFelderarray(board);
             return freieFelder[new Random().nextInt(freieFelder.length)];
         }else if(schwierigkeit == 2){
-            System.out.println("es ist an der richtigen stelle");
             return this.getBestMove(board);
         }else{
             System.out.println("Fehler in Player.java funktion getBotTurn()");
@@ -138,7 +136,7 @@ public class Player {
                 if (board[i][j] == '-'){
                     board[i][j] = 'X';
                     score = minimax(board, 0, false);
-                    System.out.println("score:"+score);
+//                    System.out.println("score:"+score);
                     board[i][j] = '-';
                     if(score > bestScore){
                         bestScore = score;
@@ -161,7 +159,6 @@ public class Player {
      */
     protected double minimax(char[][] board, int depth, boolean isMaximazing){
         int result = Board.checkWinner(board);
-//        System.out.println("depth: "+depth);
         double score;
         if(result != -2){
             // Der erste Spieler ist immer 0

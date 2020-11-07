@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Hello extends JFrame {
     public Hello(){
-        //testkommentar von notebook
+        //testkommentar von pc
         setTitle("Unsere GUI");
         setSize(300,200);
         setLocationRelativeTo(null);

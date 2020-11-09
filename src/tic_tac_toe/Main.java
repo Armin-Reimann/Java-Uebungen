@@ -2,8 +2,6 @@ package tic_tac_toe;
 
 import java.util.*;
 
-//todo wenn man gegen einen Bot spielt und als erstes Feld die 1 oder 2 eingibt, crasht das Spiel
-
 public class Main {
     public static void main(String[] args) {
         // Hier wird der Spieler gespeichert, der gerade am Zug ist

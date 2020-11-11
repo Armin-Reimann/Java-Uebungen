@@ -1,7 +1,7 @@
 package tic_tac_toe;
 
 import java.util.*;
-// test anton rogalski
+// test lars
 public class Main {
     public static void main(String[] args) {
         // Hier wird der Spieler gespeichert, der gerade am Zug ist

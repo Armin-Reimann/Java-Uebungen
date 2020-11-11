@@ -7,8 +7,9 @@ public class FirstSwingExample {
         JFrame f=new JFrame("Button Example");
         final JTextField tf=new JTextField();
         tf.setBounds(50,50, 150,20);
-        JButton b=new JButton("Click Here");
-        b.setBounds(50,100,95,30);
+        JButton b=new JButton(new ImageIcon("O.png"));
+
+        b.setBounds(100,100,100,100);
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 tf.setText("Welcome to Javatpoint.");

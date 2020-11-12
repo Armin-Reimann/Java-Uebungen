@@ -8,7 +8,6 @@ public class gui_uebung
     {
         JFrame f= new JFrame("Praktikum 2 Pro-Aufgabe");
 
-//        JTextField t1;
         JTextField t1 = new JTextField();
         DefaultListModel<String> l1 = new DefaultListModel<>();
 
@@ -21,10 +20,10 @@ public class gui_uebung
         b.setBounds(250,100,120,30);
         b.addActionListener(e -> {
             long[] auswertung = auswerten(t1.getText());
-            l1.addElement("Anzahl Vokale: "+String.valueOf(auswertung[0]));
-            l1.addElement("Anzahl Konsonanten: "+String.valueOf(auswertung[3]));
-            l1.addElement("Anzahl Zeichen: "+String.valueOf(auswertung[1]));
-            l1.addElement("Anzahl Satzzeichen: "+String.valueOf(auswertung[2]));
+            l1.addElement("Anzahl Vokale: "+ auswertung[0]);
+            l1.addElement("Anzahl Konsonanten: "+ auswertung[3]);
+            l1.addElement("Anzahl Zeichen: "+ auswertung[1]);
+            l1.addElement("Anzahl Satzzeichen: "+ auswertung[2]);
         });
 
         f.add(list);

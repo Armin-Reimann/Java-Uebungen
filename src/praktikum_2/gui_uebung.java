@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class gui_uebung
 {
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         JFrame f= new JFrame("Praktikum 2 Pro-Aufgabe");
 
@@ -26,7 +26,6 @@ public class gui_uebung
             l1.addElement("Anzahl Konsonanten: "+String.valueOf(auswertung[3]));
             l1.addElement("Anzahl Zeichen: "+String.valueOf(auswertung[1]));
             l1.addElement("Anzahl Satzzeichen: "+String.valueOf(auswertung[2]));
-
         });
 
         f.add(list);
@@ -43,7 +42,7 @@ public class gui_uebung
         auswertung[0] = text.chars().filter(ch -> ch == 'e' || ch == 'a' || ch == 'o' || ch == 'i' || ch == 'u').count();
         auswertung[1] = text.chars().filter(ch -> ch != ' ').count();
         auswertung[2] = text.chars().filter(ch -> ch == '.' || ch == ';' || ch == ',' || ch == ':' || ch == '-' || ch == '_').count();
-        auswertung[2] = text.chars().filter(ch -> ch != 'e' && ch != 'a' && ch != 'o' && ch != 'i' && ch != 'u').count();
+        auswertung[3] = text.chars().filter(ch -> ch != 'e' && ch != 'a' && ch != 'o' && ch != 'i' && ch != 'u').count();
         return auswertung;
     }
 

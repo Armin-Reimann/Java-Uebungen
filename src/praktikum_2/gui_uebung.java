@@ -1,6 +1,5 @@
 package praktikum_2;
 
-
 import javax.swing.*;
 
 public class gui_uebung
@@ -9,8 +8,8 @@ public class gui_uebung
     {
         JFrame f= new JFrame("Praktikum 2 Pro-Aufgabe");
 
-        JTextField t1,t2;
-        t1=new JTextField();
+//        JTextField t1;
+        JTextField t1 = new JTextField();
         DefaultListModel<String> l1 = new DefaultListModel<>();
 
         JList<String> list = new JList<>(l1);
@@ -42,7 +41,7 @@ public class gui_uebung
         auswertung[0] = text.chars().filter(ch -> ch == 'e' || ch == 'a' || ch == 'o' || ch == 'i' || ch == 'u').count();
         auswertung[1] = text.chars().filter(ch -> ch != ' ').count();
         auswertung[2] = text.chars().filter(ch -> ch == '.' || ch == ';' || ch == ',' || ch == ':' || ch == '-' || ch == '_').count();
-        auswertung[3] = text.chars().filter(ch -> ch != 'e' && ch != 'a' && ch != 'o' && ch != 'i' && ch != 'u').count();
+        auswertung[3] = text.chars().filter(ch -> ch != 'e' && ch != 'a' && ch != 'o' && ch != 'i' && ch != 'u' && ch != '.' && ch != ';' && ch != ',' && ch != ':' && ch != '-' && ch != '_' && ch != ' ').count();
         return auswertung;
     }
 

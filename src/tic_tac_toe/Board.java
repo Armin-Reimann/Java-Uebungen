@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Board {
     char[][] board;
+    int turn = 0;
     public Board(char[][] inhalt){
         board = new char[3][3];
         if(inhalt[0][0] != 'f'){
@@ -15,6 +16,15 @@ public class Board {
         }
 
     }
+
+    public int getTurn(){
+        return this.turn;
+    }
+
+    public void setTurn(){
+        this.turn = ( this.turn + 1) % 2;
+    }
+
     public char[][] getInhalt(){
         return board;
     }

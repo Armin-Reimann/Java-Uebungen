@@ -29,4 +29,15 @@ public class TTTFrame extends JFrame {
         buttonBounds[8] = new int[]{x_start+((abstand+button_breite)*2), y_start+((abstand+button_hoehe)*2), button_breite, button_hoehe};
         return buttonBounds[key];
     }
+
+    public void erstelleButton(){
+
+    }
+
+    public void erstelleLabel(){
+        JLabel l1,l2;
+        l1=new JLabel("Armin ist am Zug!");
+        l1.setBounds(300,50, 100,30);
+        this.add(l1);
+    }
 }

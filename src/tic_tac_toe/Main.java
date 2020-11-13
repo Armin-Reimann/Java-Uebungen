@@ -1,10 +1,10 @@
 package tic_tac_toe;
 
-import swing.TTTFrame;
-
+//import swing.TTTFrame;
 import javax.swing.*;
+import java.awt.*;
 import java.util.*;
-// test armin hat was geändert
+
 public class Main {
 
     public static void main(String[] args) {
@@ -40,75 +40,27 @@ public class Main {
 
         erstelleSpielfeld(b_bot, a_players);
 
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//        char [][] tempboard = board.getInhalt();
-//        while(winner == -2){
-//            printBoard(board.getInhalt());
-//            int[] turnField = players[turn].getTurn(board.getInhalt());
-//            if (turnField == null){
-//                break;
-//            }
-
-
-//            turn = ( turn + 1) % 2;
-//            if(players[turn].validateTurn(board.getInhalt(), turnField)){
-//                if(players[turn].number == 0){
-//                    tempboard[turnField[0]][turnField[1]] = 'O';
-//                }else{
-//                    tempboard[turnField[0]][turnField[1]] = 'X';
-//                }
-//                //modulo! 0 1 0 1 0 1 ... da nur zwei Spieler
-//                turn = ( turn + 1) % 2;
-//            }
-
-
-//            winner = Board.checkWinner(tempboard);
-//        }
-
-
-//        if(winner == 0){
-//            System.out.println(a.name + " hat gewonnen!");
-//        }else if (winner == 1){
-//            System.out.println(b.name + " hat gewonnen!");
-//        }
-//        else if(winner == -2 || winner == -1){
-//            System.out.println("Unentschieden!");
-//        }
-    }
-
-    public static void printBoard(char[][] meinBoard){
-        System.out.println(meinBoard[0][0] + " | " + meinBoard[0][1] + " | " + meinBoard[0][2]);
-        System.out.println("____________");
-        System.out.println(meinBoard[1][0] + " | " + meinBoard[1][1] + " | " + meinBoard[1][2]);
-        System.out.println("____________");
-        System.out.println(meinBoard[2][0] + " | " + meinBoard[2][1] + " | " + meinBoard[2][2]);
     }
 
     public static void erstelleSpielfeld(String b_bot, Player[] a_player){
         char[][] leer = new char[1][1];
         leer[0][0] = 'f';
         Board board = new Board(leer);
-        int winner = -2;
-
-        swing.TTTFrame f = new TTTFrame("Button Example");
+        TTTFrame f = new TTTFrame("Button Example");
         f.setTitle("Tic Tac Toe by Armin Reimann");
-        //erstellt die beiden X und O Icons
+        Image icon = Toolkit.getDefaultToolkit().getImage("src/swing/icon2.png");
+        f.setIconImage(icon);
+
+        f.erstelleLabel();
+
 
 
         // ab hier beginnt das Tic Tac Toe Spiel
-
         JButton[] a_button = new JButton[9];
         char [][] tempboard = board.getInhalt();
         for(int i=0; i<=8; i++){
             a_button[i] = new JButton(new ImageIcon("src/swing/leer.png"));
-            int[] buttonBound = f.getButtonBounds(i, 10, 10,150,150,10 );
+            int[] buttonBound = f.getButtonBounds(i, 120, 100,150,150,10 );
             a_button[i].setBounds(buttonBound[0],buttonBound[1],buttonBound[2],buttonBound[3]);
             int finalI = i;
             a_button[i].addActionListener(e -> {
@@ -123,7 +75,7 @@ public class Main {
                     tempboard[tempZug[0]][tempZug[1]] = 'X';
                 }
                 board.setWinner(Board.checkWinner(tempboard));
-                if(!checkWinner(board.getWinner(), a_player)){
+                if(checkWinner(board.getWinner(), a_player)){
                     return;
                 }
                 board.setTurn();
@@ -146,10 +98,11 @@ public class Main {
         for(int i=0; i<=8; i++){
             f.add(a_button[i]);
         }
+        // bis hier geht das tic tac toe Spiel
 
-//        f.add(b);
+
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        f.setSize(800,800);
+        f.setSize(750,750);
         f.setLayout(null);
         f.setVisible(true);
     }
@@ -158,16 +111,16 @@ public class Main {
 
         if(winner == 0){
             System.out.println(player[0].name + " hat gewonnen!");
-            return false;
+            return true;
         }else if (winner == 1){
             System.out.println(player[1].name + " hat gewonnen!");
-            return false;
+            return true;
         }
         else if(winner == -1){
             System.out.println("Unentschieden!");
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
     }
 

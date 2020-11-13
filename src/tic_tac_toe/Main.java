@@ -1,9 +1,38 @@
 package tic_tac_toe;
 
+import swing.TTTFrame;
+
+import javax.swing.*;
 import java.util.*;
 // test armin hat was geändert
 public class Main {
     public static void main(String[] args) {
+        swing.TTTFrame f = new TTTFrame("Button Example");
+        f.setTitle("Tic Tac Toe by Armin Reimann");
+        //erstellt die beiden X und O Icons
+
+
+        // ab hier beginnt das Tic Tac Toe Spiel
+        JButton[] a_button = new JButton[9];
+        for(int i=0; i<=8; i++){
+            a_button[i] = new JButton(new ImageIcon("src/swing/leer.png"));
+            int[] buttonBound = f.getButtonBounds(i, 10, 10,150,150,10 );
+            a_button[i].setBounds(buttonBound[0],buttonBound[1],buttonBound[2],buttonBound[3]);
+            a_button[i].addActionListener(e -> {
+
+            });
+        }
+        for(int i=0; i<=8; i++){
+            f.add(a_button[i]);
+        }
+//        f.add(b);
+        f.setSize(800,800);
+        f.setLayout(null);
+        f.setVisible(true);
+
+
+
+
         // Hier wird der Spieler gespeichert, der gerade am Zug ist
         int turn = 0;
         int winner = -2;

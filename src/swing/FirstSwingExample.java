@@ -15,9 +15,12 @@ public class FirstSwingExample {
         // ab hier beginnt das Tic Tac Toe Spiel
         JButton[] b = new JButton[9];
         for(int i=0; i<=8; i++){
-            b[i] = new JButton(new ImageIcon("src/swing/X.png"));
+            b[i] = new JButton(new ImageIcon("src/swing/leer.png"));
             int[] buttonBound = f.getButtonBounds(i, 10, 10,150,150,10 );
             b[i].setBounds(buttonBound[0],buttonBound[1],buttonBound[2],buttonBound[3]);
+            b[i].addActionListener(e -> {
+
+            });
         }
         for(int i=0; i<=8; i++){
             f.add(b[i]);

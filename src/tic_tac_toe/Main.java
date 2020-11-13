@@ -95,7 +95,7 @@ public class Main {
         char[][] leer = new char[1][1];
         leer[0][0] = 'f';
         Board board = new Board(leer);
-//        int turn = 1;
+        int winner = -2;
 
         swing.TTTFrame f = new TTTFrame("Button Example");
         f.setTitle("Tic Tac Toe by Armin Reimann");
@@ -112,7 +112,8 @@ public class Main {
             a_button[i].setBounds(buttonBound[0],buttonBound[1],buttonBound[2],buttonBound[3]);
             int finalI = i;
             a_button[i].addActionListener(e -> {
-                if (board.getTurn() == 1){
+                int turn = board.getTurn();
+                if (turn == 1){
                     a_button[finalI].setIcon(new ImageIcon("src/swing/O.png"));
                     int[] tempZug = a_player[0].convertInput(finalI);
                     tempboard[tempZug[0]][tempZug[1]] = 'O';
@@ -120,6 +121,10 @@ public class Main {
                     a_button[finalI].setIcon(new ImageIcon("src/swing/X.png"));
                     int[] tempZug = a_player[1].convertInput(finalI);
                     tempboard[tempZug[0]][tempZug[1]] = 'X';
+                }
+                board.setWinner(Board.checkWinner(tempboard));
+                if(!checkWinner(board.getWinner(), a_player)){
+                    return;
                 }
                 board.setTurn();
                 if(b_bot.equals("j")){
@@ -130,6 +135,10 @@ public class Main {
                     }
                     a_button[convertierterInput].setIcon(new ImageIcon("src/swing/X.png"));
                     tempboard[botTurn[0]][botTurn[1]] = 'X';
+                    board.setWinner(Board.checkWinner(tempboard));
+                    if(!checkWinner(board.getWinner(), a_player)){
+                        return;
+                    }
                     board.setTurn();
                 }
             });
@@ -139,9 +148,27 @@ public class Main {
         }
 
 //        f.add(b);
+        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.setSize(800,800);
         f.setLayout(null);
         f.setVisible(true);
+    }
+
+    public static boolean checkWinner(int winner, Player[] player){
+
+        if(winner == 0){
+            System.out.println(player[0].name + " hat gewonnen!");
+            return false;
+        }else if (winner == 1){
+            System.out.println(player[1].name + " hat gewonnen!");
+            return false;
+        }
+        else if(winner == -1){
+            System.out.println("Unentschieden!");
+            return false;
+        }else{
+            return true;
+        }
     }
 
 }

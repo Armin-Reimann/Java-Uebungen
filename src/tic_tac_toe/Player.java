@@ -135,7 +135,7 @@ public class Player {
      * @return gibt alle Botzüge zurück (von allen Schwierigkeitsstufen)
      */
     protected int[] getBotTurn(char[][] board){
-        System.out.println("Der Bot hat einen Zug gemacht");
+//        System.out.println("Der Bot hat einen Zug gemacht");
         if(schwierigkeit == 1){
             int[][] freieFelder = Board.getFreieFelderarray(board);
             return freieFelder[new Random().nextInt(freieFelder.length)];

@@ -5,6 +5,7 @@ import java.util.*;
 public class Board {
     char[][] board;
     int turn = 1;
+    int winner = -2;
     public Board(char[][] inhalt){
         board = new char[3][3];
         if(inhalt[0][0] != 'f'){
@@ -23,6 +24,14 @@ public class Board {
 
     public void setTurn(){
         this.turn = ( this.turn + 1) % 2;
+    }
+
+    public int getWinner(){
+        return this.winner;
+    }
+
+    public void setWinner(int winner){
+        this.winner = winner;
     }
 
     public char[][] getInhalt(){

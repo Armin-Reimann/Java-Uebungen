@@ -58,7 +58,7 @@ public class Player {
      * @param input zahl zwischen 0 und 8
      * @return stelle im array
      */
-    protected int [] convertInput(int input){
+    public int [] convertInput(int input){
         int[] returnArray = new int[2];
         switch (input) {
             case 0 -> {
@@ -100,6 +100,33 @@ public class Player {
             default -> System.out.println("Fehler in Klasse Player Methode convertInput()");
         }
         return returnArray;
+    }
+
+
+    public int convertInputBack(int[] input){
+        int returnWert = -1;
+        if (input[0] == 0 && input[1] == 0) {
+            returnWert = 0;
+        } else if (input[0] == 0 && input[1] == 1) {
+            returnWert = 1;
+        } else if (input[0] == 0 && input[1] == 2) {
+            returnWert = 2;
+        } else if (input[0] == 1 && input[1] == 0) {
+            returnWert = 3;
+        } else if (input[0] == 1 && input[1] == 1) {
+            returnWert = 4;
+        } else if (input[0] == 1 && input[1] == 2) {
+            returnWert = 5;
+        } else if (input[0] == 2 && input[1] == 0) {
+            returnWert = 6;
+        } else if (input[0] == 2 && input[1] == 1) {
+            returnWert = 7;
+        } else if (input[0] == 2 && input[1] == 2) {
+            returnWert = 8;
+        } else {
+            System.out.println("Fehler in Klasse Player Methode convertInput()");
+        }
+        return returnWert;
     }
 
     /**

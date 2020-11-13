@@ -91,12 +91,11 @@ public class Main {
         System.out.println(meinBoard[2][0] + " | " + meinBoard[2][1] + " | " + meinBoard[2][2]);
     }
 
-    public static void erstelleSpielfeld(String b_bot, Player[] player){
+    public static void erstelleSpielfeld(String b_bot, Player[] a_player){
         char[][] leer = new char[1][1];
         leer[0][0] = 'f';
         Board board = new Board(leer);
-        int turn = 0;
-        Player[] a_players = player;
+//        int turn = 1;
 
         swing.TTTFrame f = new TTTFrame("Button Example");
         f.setTitle("Tic Tac Toe by Armin Reimann");
@@ -104,7 +103,9 @@ public class Main {
 
 
         // ab hier beginnt das Tic Tac Toe Spiel
+
         JButton[] a_button = new JButton[9];
+        char [][] tempboard = board.getInhalt();
         for(int i=0; i<=8; i++){
             a_button[i] = new JButton(new ImageIcon("src/swing/leer.png"));
             int[] buttonBound = f.getButtonBounds(i, 10, 10,150,150,10 );
@@ -112,17 +113,31 @@ public class Main {
             int finalI = i;
             a_button[i].addActionListener(e -> {
                 if (board.getTurn() == 1){
-
                     a_button[finalI].setIcon(new ImageIcon("src/swing/O.png"));
+                    int[] tempZug = a_player[0].convertInput(finalI);
+                    tempboard[tempZug[0]][tempZug[1]] = 'O';
                 }else{
                     a_button[finalI].setIcon(new ImageIcon("src/swing/X.png"));
+                    int[] tempZug = a_player[1].convertInput(finalI);
+                    tempboard[tempZug[0]][tempZug[1]] = 'X';
                 }
                 board.setTurn();
+                if(b_bot.equals("j")){
+                    int[] botTurn = a_player[1].getBotTurn(tempboard);
+                    int convertierterInput = a_player[1].convertInputBack(botTurn);
+                    if (convertierterInput == -1){
+                        return;
+                    }
+                    a_button[convertierterInput].setIcon(new ImageIcon("src/swing/X.png"));
+                    tempboard[botTurn[0]][botTurn[1]] = 'X';
+                    board.setTurn();
+                }
             });
         }
         for(int i=0; i<=8; i++){
             f.add(a_button[i]);
         }
+
 //        f.add(b);
         f.setSize(800,800);
         f.setLayout(null);

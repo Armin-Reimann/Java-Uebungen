@@ -21,37 +21,37 @@ public class Player {
         this.schwierigkeit = schwierigkeit;
     }
 
-    /**
-     * @param boardInhalt das spielbrett
-     * @return Gibt einen einen Zug zurück
-     */
-    public int[] getTurn(char[][] boardInhalt){
-        int[] turn;
-        if(!this.name.equals("false")){
-            System.out.println(name + " - du bist am Zug!");
-        }else{
-            System.out.println("Spieler " + number + " - du bist am Zug!");
-        }
-
-        if(Board.getFreieFelder(boardInhalt) == 0){
-            return null;
-        }else{
-            if(this.bot){
-                //todo hier den bot turn mit Minimax
-                turn = this.getBotTurn(boardInhalt);
-            }else{
-                int input = scanner.nextInt();
-                if(input < 9 && input >= 0){
-                    turn = this.convertInput(input);
-                }else {
-                    System.out.println("Ungültige Eingabe, bitte nochmal probieren.");
-                    return getTurn(boardInhalt);
-                }
-            }
-            return turn;
-        }
-
-    }
+//    /**
+//     * @param boardInhalt das spielbrett
+//     * @return Gibt einen einen Zug zurück
+//     */
+//    public int[] getTurn(char[][] boardInhalt){
+//        int[] turn;
+//        if(!this.name.equals("false")){
+//            System.out.println(name + " - du bist am Zug!");
+//        }else{
+//            System.out.println("Spieler " + number + " - du bist am Zug!");
+//        }
+//
+//        if(Board.getFreieFelder(boardInhalt) == 0){
+//            return null;
+//        }else{
+//            if(this.bot){
+//                //todo hier den bot turn mit Minimax
+//                turn = this.getBotTurn(boardInhalt);
+//            }else{
+//                int input = scanner.nextInt();
+//                if(input < 9 && input >= 0){
+//                    turn = this.convertInput(input);
+//                }else {
+//                    System.out.println("Ungültige Eingabe, bitte nochmal probieren.");
+//                    return getTurn(boardInhalt);
+//                }
+//            }
+//            return turn;
+//        }
+//
+//    }
 
     /**
      * sorgt dafür, dass man als eingabe für tic tac toe die zahlen 0-8 nehmen kann

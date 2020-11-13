@@ -4,11 +4,15 @@ import javax.swing.*;
 
 public class TTTFrame extends JFrame {
     Icon i_o, i_x;
+    int page;;
     public TTTFrame(String button_example) {
         super();
         //todo noch bilder für einen sieg einbinden
         this.i_o = new ImageIcon("src/swing/O.png");
         this.i_x = new ImageIcon("src/swing/X.png");
+        this.erstelleWeiterButton();
+
+//        this.willkommen();
     }
 
     public int[] getButtonBounds(int key, int x_start, int y_start, int button_breite , int button_hoehe , int abstand){
@@ -30,14 +34,109 @@ public class TTTFrame extends JFrame {
         return buttonBounds[key];
     }
 
-    public void erstelleButton(){
+    public void erstelleWeiterButton(){
+        JButton weiter = new JButton("Weiter");
+        weiter.setBounds(600,650,95,30);
+        weiter.addActionListener(a->{
+//            System.out.println("Page: "+this.page);
+//            this.runPageActions();
 
+//            this.willkommen();
+            this.page ++;
+        });
+        this.add(weiter);
     }
 
-    public void erstelleLabel(){
-        JLabel l1,l2;
-        l1=new JLabel("Armin ist am Zug!");
-        l1.setBounds(300,50, 100,30);
-        this.add(l1);
+    public void erstelleLabel(String inhalt){
+//        System.out.println("inhalt: " + inhalt);
+        JLabel asdf = new JLabel("test");
+//        asdf.setVisible(false);
+        asdf.setBounds(300,50, 100,30);
+//        System.out.println("test");
+        System.out.println("this: "+this);
+        this.add(asdf);
+    }
+
+    public void erzeugeTTT(Board board, Player[] a_player, String b_bot){
+        JButton[] a_button = new JButton[9];
+        char [][] tempboard = board.getInhalt();
+        for(int i=0; i<=8; i++){
+            a_button[i] = new JButton(new ImageIcon("src/swing/leer.png"));
+            int[] buttonBound = this.getButtonBounds(i, 120, 100,150,150,10 );
+            a_button[i].setBounds(buttonBound[0],buttonBound[1],buttonBound[2],buttonBound[3]);
+            int finalI = i;
+            a_button[i].addActionListener(e -> {
+//                System.out.println("jakfaklfklasdfklasdfjlöasdjf");
+                if (board.getTurn() == 1){
+                    a_button[finalI].setIcon(new ImageIcon("src/swing/O.png"));
+                    int[] tempZug = a_player[0].convertInput(finalI);
+                    tempboard[tempZug[0]][tempZug[1]] = 'O';
+                }else{
+                    a_button[finalI].setIcon(new ImageIcon("src/swing/X.png"));
+                    int[] tempZug = a_player[1].convertInput(finalI);
+                    tempboard[tempZug[0]][tempZug[1]] = 'X';
+                }
+                board.setWinner(Board.checkWinner(tempboard));
+                if(this.checkWinner(board.getWinner(), a_player)){
+                    return;
+                }
+                board.setTurn();
+                if(b_bot.equals("j")){
+                    int[] botTurn = a_player[1].getBotTurn(tempboard);
+                    int convertierterInput = a_player[1].convertInputBack(botTurn);
+                    if (convertierterInput == -1){
+                        return;
+                    }
+                    a_button[convertierterInput].setIcon(new ImageIcon("src/swing/X.png"));
+                    tempboard[botTurn[0]][botTurn[1]] = 'X';
+                    board.setWinner(Board.checkWinner(tempboard));
+                    board.setTurn();
+//                    if(!checkWinner(board.getWinner(), a_player)){
+//                        this.endbildschirm();
+//                    }
+
+                }
+            });
+        }
+        for(int i=0; i<=8; i++){
+            this.add(a_button[i]);
+        }
+    }
+
+    public  boolean checkWinner(int winner, Player[] player){
+
+        if(winner == 0){
+            System.out.println(player[0].name + " hat gewonnen!");
+            return true;
+        }else if (winner == 1){
+            System.out.println(player[1].name + " hat gewonnen!");
+            return true;
+        }
+        else if(winner == -1){
+            System.out.println("Unentschieden!");
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    protected void runPageActions(){
+        switch (this.page) {
+            case 0 -> {
+//                this.getContentPane().removeAll();
+                this.willkommen();
+//                this.erstelleWeiterButton();
+            }
+            case 1 -> {
+//                this.getContentPane().removeAll();
+//                this.erstelleLabel("Seite2");
+//                this.erstelleWeiterButton();
+            }
+            default -> System.out.println("Page nicht definiert");
+        }
+    }
+
+    public void willkommen(){
+        this.erstelleLabel("Willkommen");
     }
 }

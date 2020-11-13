@@ -29,16 +29,4 @@ public class Hello extends JFrame {
         gl.setHorizontalGroup(gl.createSequentialGroup().addComponent(button));
         gl.setAutoCreateContainerGaps(true);
     }
-    public static void main(String[] args)
-    {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Hello m = new Hello();
-                m.setVisible(true);
-            }
-        });
-//        System.out.println("Hallo Welt");
-    }
 }
-

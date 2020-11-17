@@ -1,10 +1,11 @@
 package tic_tac_toe;
 
 import javax.swing.*;
+import java.util.Scanner;
 
 public class TTTFrame extends JFrame {
     Icon i_o, i_x;
-    int page;
+    int page = 0;
     JLabel[] a_label = new JLabel[4];
 
     public TTTFrame(String button_example) {
@@ -16,6 +17,7 @@ public class TTTFrame extends JFrame {
         this.erzeugeAlleLabels();
 
         // todo um z.B. das Willkommen-Label unsichtbar zu machen kann man hoffentlich .setVisible() nutzen
+        this.runPageActions();
 //        this.willkommen();
     }
 
@@ -43,7 +45,7 @@ public class TTTFrame extends JFrame {
         weiter.setBounds(600,650,95,30);
         weiter.addActionListener(a->{
 //            System.out.println("Page: "+this.page);
-//            this.runPageActions();
+            this.runPageActions();
 
 //            this.willkommen();
             this.page ++;
@@ -61,7 +63,39 @@ public class TTTFrame extends JFrame {
         this.add(asdf);
     }
 
-    public void erzeugeTTT(Board board, Player[] a_player, String b_bot){
+    public void erzeugeTTT(){
+        String b_bot = null;
+        boolean check = false;
+        char[][] leer = new char[1][1];
+        leer[0][0] = 'f';
+        Board board = new Board(leer);
+
+        Scanner scanner = new Scanner(System.in);
+        Player a = new Player(0);
+        Player b = new Player(1);
+        System.out.println("Namen für ersten Spieler eingeben!");
+        a.setName(scanner.next());
+        Player[] a_player = new Player[2];
+        a_player[0] = a;
+        a_player[1] = b;
+
+        while (!check){
+            System.out.println("Gegen einen Bot spielen? [j/n]");
+            b_bot = scanner.next();
+            if(b_bot.equals("j")){
+                b.setBot();
+                System.out.println("Schwierigkeit einstellen: leicht(1) schwer(2)");
+                b.setSchwierigkeit(scanner.nextInt());
+                check = true;
+            }else if(b_bot.equals("n")){
+                System.out.println("Namen für zweiten Spieler eingeben!");
+                b.setName(scanner.next());
+                check = true;
+            }else {
+                System.out.println("Falsche Eingabe, bitte wiederholen!");
+            }
+        }
+
         JButton[] a_button = new JButton[9];
         char [][] tempboard = board.getInhalt();
         for(int i=0; i<=8; i++){
@@ -69,6 +103,7 @@ public class TTTFrame extends JFrame {
             int[] buttonBound = this.getButtonBounds(i, 120, 100,150,150,10 );
             a_button[i].setBounds(buttonBound[0],buttonBound[1],buttonBound[2],buttonBound[3]);
             int finalI = i;
+            String finalB_bot = b_bot;
             a_button[i].addActionListener(e -> {
 //                System.out.println("jakfaklfklasdfklasdfjlöasdjf");
                 if (board.getTurn() == 1){
@@ -85,7 +120,7 @@ public class TTTFrame extends JFrame {
                     return;
                 }
                 board.setTurn();
-                if(b_bot.equals("j")){
+                if(finalB_bot.equals("j")){
                     int[] botTurn = a_player[1].getBotTurn(tempboard);
                     int convertierterInput = a_player[1].convertInputBack(botTurn);
                     if (convertierterInput == -1){
@@ -127,14 +162,10 @@ public class TTTFrame extends JFrame {
     protected void runPageActions(){
         switch (this.page) {
             case 0 -> {
-//                this.getContentPane().removeAll();
                 this.willkommen();
-//                this.erstelleWeiterButton();
             }
             case 1 -> {
-//                this.getContentPane().removeAll();
-//                this.erstelleLabel("Seite2");
-//                this.erstelleWeiterButton();
+                this.erzeugeTTT();
             }
             default -> System.out.println("Page nicht definiert");
         }

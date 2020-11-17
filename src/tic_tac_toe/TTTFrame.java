@@ -4,14 +4,18 @@ import javax.swing.*;
 
 public class TTTFrame extends JFrame {
     Icon i_o, i_x;
-    int page;;
+    int page;
+    JLabel[] a_label = new JLabel[4];
+
     public TTTFrame(String button_example) {
         super();
         //todo noch bilder für einen sieg einbinden
         this.i_o = new ImageIcon("src/swing/O.png");
         this.i_x = new ImageIcon("src/swing/X.png");
         this.erstelleWeiterButton();
+        this.erzeugeAlleLabels();
 
+        // todo um z.B. das Willkommen-Label unsichtbar zu machen kann man hoffentlich .setVisible() nutzen
 //        this.willkommen();
     }
 
@@ -137,6 +141,34 @@ public class TTTFrame extends JFrame {
     }
 
     public void willkommen(){
-        this.erstelleLabel("Willkommen");
+        this.a_label[0].setVisible(true);
+    }
+
+    public void erzeugeAlleLabels(){
+        JLabel lab_willkommen, lab_2, lab_3, lab_4;
+        lab_willkommen = new JLabel("Willkommen zu Tic-Tac-Toc");
+        lab_2 = new JLabel("Test Lab2");
+        lab_3 = new JLabel("Test Lab3");
+        lab_4 = new JLabel("Test Lab4");
+
+        lab_willkommen.setBounds(300,50,200,30);
+        lab_2.setBounds(300,50,100,30);
+        lab_3.setBounds(300,50,100,30);
+        lab_4.setBounds(300,50,100,30);
+
+        lab_willkommen.setVisible(false);
+        lab_2.setVisible(false);
+        lab_3.setVisible(false);
+        lab_4.setVisible(false);
+
+        this.a_label[0] = lab_willkommen;
+        this.a_label[1] = lab_2;
+        this.a_label[2] = lab_3;
+        this.a_label[3] = lab_4;
+
+        this.add(lab_willkommen);
+        this.add(lab_2);
+        this.add(lab_3);
+        this.add(lab_4);
     }
 }

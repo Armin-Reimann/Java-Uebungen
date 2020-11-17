@@ -5,7 +5,7 @@ public class Player {
     int number;
     boolean bot = false;
     String name = "false";
-    int schwierigkeit;
+    int schwierigkeit = 0;
     Scanner scanner = new Scanner(System.in);
 
     public Player(int number){
@@ -19,6 +19,10 @@ public class Player {
 
     public void setSchwierigkeit(int schwierigkeit){
         this.schwierigkeit = schwierigkeit;
+    }
+
+    public int getSchwierigkeit(){
+        return this.schwierigkeit;
     }
 
 //    /**

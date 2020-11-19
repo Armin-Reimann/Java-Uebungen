@@ -24,9 +24,8 @@ public class TTTFrame extends JFrame {
         this.erzeugeAlleTextFields();
         this.erzeugeAlleCheckbox();
         this.erzeugePlayer();
-        // todo um z.B. das Willkommen-Label unsichtbar zu machen kann man hoffentlich .setVisible() nutzen
+
         this.runPageActions();
-//        this.willkommen();
     }
 
     public int[] getButtonBounds(int key, int x_start, int y_start, int button_breite , int button_hoehe , int abstand){

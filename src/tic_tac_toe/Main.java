@@ -8,7 +8,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        //testkommentar12341567
+        //testkommentar von Armin
 
         TTTFrame f = new TTTFrame("Button Example");
         f.setTitle("Tic Tac Toe by Armin Reimann");

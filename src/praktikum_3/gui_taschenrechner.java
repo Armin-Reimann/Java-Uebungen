@@ -10,10 +10,6 @@ public class gui_taschenrechner
 
         JTextField t1 = new JTextField();
         JTextField t2 = new JTextField();
-//        DefaultListModel<String> l1 = new DefaultListModel<>();
-
-//        JList<String> list = new JList<>(l1);
-//        list.setBounds(40,150, 200,100);
 
         t1.setBounds(40,100, 200,30);
         t2.setBounds(40,140, 200,30);
@@ -25,7 +21,6 @@ public class gui_taschenrechner
             t2.setText(String.valueOf(ergebnis));
         });
 
-//        f.add(list);
         f.add(b);
         f.add(t1);
         f.add(t2);

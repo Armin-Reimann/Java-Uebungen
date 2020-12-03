@@ -10,7 +10,6 @@ public class gui_uebung
 
         JTextField t1 = new JTextField();
         DefaultListModel<String> l1 = new DefaultListModel<>();
-
         JList<String> list = new JList<>(l1);
         list.setBounds(40,150, 200,100);
 

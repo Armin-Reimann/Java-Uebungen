@@ -8,7 +8,6 @@ public class Player {
 
     public Player(int number){
         this.number = number;
-
     }
 
     public int getTurn(){
@@ -22,11 +21,6 @@ public class Player {
     }
 
     public boolean validateTurn(int [] board, int turn){
-        if (board [turn] == -1){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return board[turn] == -1;
     }
 }

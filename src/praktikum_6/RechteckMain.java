@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class RechteckMain {
     public static void main(String[] args){
-
         JFrame f= new JFrame("Praktikum 6 Pro-Aufgabe (Viereck darstellen)");
 
         JTextField t1 = new JTextField();
@@ -22,8 +21,10 @@ public class RechteckMain {
         JButton b= new JButton("Zeige an");
         JButton bQuader =new JButton("Berechne Quader");
         JButton ergebnis = new JButton();
+
         b.setBounds(250,100,120,30);
         bQuader.setBounds(370,100,120,30);
+
         b.addActionListener(e -> {
             double laenge = Double.parseDouble(t1.getText());
             double breite = Double.parseDouble(t2.getText());

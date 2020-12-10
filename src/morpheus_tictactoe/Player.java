@@ -11,7 +11,7 @@ public class Player {
     }
 
     public int getTurn(){
-        System.out.println("Player" + number + " - du bist am Zug! ");
+       System.out.println("Player" + number + " - du bist am Zug! ");
        int input = scanner.nextInt();
        if (input < 9 && input >= 0){
            return input;

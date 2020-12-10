@@ -3,7 +3,18 @@ package morpheus_tictactoe;
 public class YouTube {
 
     public static void main(String[] args) {
-        /*Hier wird der Spieler gespeichert, der gerade am  Zug ist */
+        // Hier wird der Spieler gespeichert, der gerade am  Zug ist
+
+        int[] spielfeld = {0,0,0,0,0,0,0,0,0};
+
+        int[][] spielfeld_2d =
+                {
+                    {0,0,0},
+                    {0,0,0},
+                    {0,0,0},
+                };
+        int mitte = spielfeld_2d[2][1];
+
         int turn = 0; //Spieler
         int winner = -1;
         int[] board = new int[9]; //Anzahl der  Felder
@@ -12,21 +23,26 @@ public class YouTube {
         }
         Player a = new Player(0);
         Player b = new Player(1);
+
+        // Player-Array mit 2 Feldern
         Player [] players = new Player [2];
         players[0]= a;
         players[1]= b;
 
-         while(winner == -1){
-             printBoard(board);
-            int turnField = players[turn].getTurn();
-            if (a.validateTurn(board, turnField)){
-                board[turnField] = players[turn].number;
-                turn = (turn + 1) % 2;
-            }
-             winner = checkWinner(board);
-         }
-         System.out.println("Herzlichen Glückwunsch, Spieler" + winner + " Du hast gewonnen!");
-        printBoard(board);
+        // Schleife läuft solange es keinen Gewinner gibt
+        while(winner == -1){
+           //Spielfeld wird ausgegeben
+           printBoard(board);
+
+           int turnField = players[turn].getTurn();
+           if (a.validateTurn(board, turnField)){
+               board[turnField] = players[turn].number;
+               turn = (turn + 1) % 2;
+           }
+            winner = checkWinner(board);
+        }
+        System.out.println("Herzlichen Glückwunsch, Spieler" + winner + " Du hast gewonnen!");
+        //printBoard(board);
     }
 
     public static int checkWinner (int [] board) {
@@ -67,6 +83,5 @@ public class YouTube {
         System.out.println(meinBoard [3] + " | " + meinBoard[4] + " | "+ meinBoard[5]);
         System.out.println("____________");
         System.out.println(meinBoard [6] + " | " + meinBoard[7] + " | "+ meinBoard[8]);
-
     }
 }

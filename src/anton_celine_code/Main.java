@@ -36,7 +36,7 @@ public class Main {
             winner = checkWinner(board);
         }
         System.out.println("Herzlichen Glückwunsch, Spieler" + winner + " Du hast gewonnen!");
-        //printBoard(board);
+        printBoard(board);
     }
 
     public static int checkWinner (int [][] board) {

@@ -174,7 +174,6 @@ public class Player {
                         move[0] = i;
                         move[1] = j;
                     }
-
                 }
             }
         }
@@ -201,8 +200,6 @@ public class Player {
             }else{
                 score = 0;
             }
-
-
             return score;
         }
         if(isMaximazing){

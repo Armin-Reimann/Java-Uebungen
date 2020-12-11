@@ -3,17 +3,9 @@ package anton_celine_code;
 public class Main {
 
     public static void main(String[] args) {
-        // Hier wird der Spieler gespeichert, der gerade am  Zug ist
+        // Hier wird der Spieler gespeichert, der gerade am  Zug ist test ANton
+ 
 
-        int[] spielfeld = {0,0,0,0,0,0,0,0,0};
-
-        int[][] spielfeld_2d =
-                {
-                    {0,0,0},
-                    {0,0,0},
-                    {0,0,0},
-                };
-        int mitte = spielfeld_2d[2][1];
 
         int turn = 0; //Spieler
         int winner = -1;

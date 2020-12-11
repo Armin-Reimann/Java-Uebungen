@@ -9,9 +9,11 @@ public class Main {
 
         int turn = 0; //Spieler
         int winner = -1;
-        int[] board = new int[9]; //Anzahl der  Felder
+        int[][]  board = new int[3][3]; //3x3 Array
         for (int i = 0; i < board.length; i++) {//for-Schleife
-             board [i]= -1;
+            for (int j = 0; j < board[i].length ; j++) {//for-Schleife
+                board[i][j] = -1
+           }
         }
         Player a = new Player(0);
         Player b = new Player(1);

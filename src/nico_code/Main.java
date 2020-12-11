@@ -3,7 +3,7 @@ package nico_code;
 public class Main {
 
     public static void main(String[] args) {
-        // Hier wird der Spieler gespeichert, der gerade am  Zug ist
+        // Bla
 
         int[] spielfeld = {0,0,0,0,0,0,0,0,0};
 

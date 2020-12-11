@@ -5,7 +5,7 @@ public class YouTube {
     public static void main(String[] args) {
         // Hier wird der Spieler gespeichert, der gerade am  Zug ist
 
-        int[] spielfeld = {0,0,0,0,0,0,0,0,0};
+        int[] spielfeld = {1,2};
 
         int[][] spielfeld_2d =
                 {

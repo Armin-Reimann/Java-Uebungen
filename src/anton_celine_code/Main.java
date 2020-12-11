@@ -12,7 +12,7 @@ public class Main {
         int[][]  board = new int[3][3]; //3x3 Array
         for (int i = 0; i < board.length; i++) {//for-Schleife
             for (int j = 0; j < board[i].length ; j++) {//for-Schleife
-                board[i][j] = -1
+                board[i][j] = -1;
            }
         }
         Player a = new Player(0);
@@ -28,9 +28,9 @@ public class Main {
            //Spielfeld wird ausgegeben
            printBoard(board);
 
-           int turnField = players[turn].getTurn();
+           int[] turnField = players[turn].getTurn();
            if (a.validateTurn(board, turnField)){
-               board[turnField] = players[turn].number;
+               board[turnField[0]][turnField[1]] = players[turn].number;
                turn = (turn + 1) % 2;
            }
             winner = checkWinner(board);
@@ -39,43 +39,36 @@ public class Main {
         //printBoard(board);
     }
 
-    public static int checkWinner (int [] board) {
+    public static int checkWinner (int [][] board) {
         int winner = -1;
-        if(board[0] == board [1] && board[0] == board [2] && board [0]!= -1){
-            winner = board [0];
-        }
-        else if (board[3] == board [4] && board[3] == board [5] && board [0]!= -1){
-            winner = board[3];
-        }
-        else if (board[6] == board [7] && board[6] == board [8] && board [0]!= -1){
-            winner = board[6];
-        }
-        else if (board[0] == board [4] && board[0] == board [8] && board [0]!= -1){
-            winner = board[0];
-        }
-        else if (board[2] == board [4] && board[6] == board [2] && board [0]!= -1){
-            winner = board[2];
-        }
-        else if (board[0] == board [3] && board[0] == board [6] && board [0]!= -1){
-            winner = board[0];
-        }
-        else if (board[1] == board [4] && board[1] == board [7] && board [0]!= -1){
-            winner = board[1];
-        }
-        else if (board[2] == board [5] && board[2] == board [8] && board [0]!= -1){
-            winner = board[2];
-        }
-        else{
+        if(board[0][0] == board[0][1] && board[0][0] == board[0][2] && board[0][0] != -1){
+            winner = board[0][0];
+        }else if(board[1][0] == board[1][1] && board[1][0] == board[1][2] && board[1][0] != -1){
+            winner = board[1][0];
+        }else if(board[2][0] == board[2][1] && board[2][0] == board[2][2] && board[2][0] != -1){
+            winner = board[2][0];
+            //senkrecht
+        }else if(board[0][0] == board[1][0] && board[0][0] == board[2][0] && board[0][0] != -1){
+            winner = board[0][0];
+        }else if(board[0][1] == board[1][1] && board[0][1] == board[2][1] && board[0][1] != -1){
+            winner = board[0][1];
+        }else if(board[0][2] == board[1][2] && board[0][2] == board[2][2] && board[0][2] != -1){
+            winner = board[0][2];
+        }else if(board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] != -1){
+            winner = board[0][0];
+        }else if(board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2] != -1){
+            winner = board[0][2];
+        }else{
             winner = -1;
         }
         return winner;
     }
 
-    public static void printBoard(int [] meinBoard){
-        System.out.println(meinBoard [0] + " | " + meinBoard[1] + " | "+ meinBoard[2]);
+    public static void printBoard(int [][] meinBoard){
+        System.out.println(meinBoard[0][0] + " | " + meinBoard[0][1] + " | "+ meinBoard[0][2]);
         System.out.println("____________");
-        System.out.println(meinBoard [3] + " | " + meinBoard[4] + " | "+ meinBoard[5]);
+        System.out.println(meinBoard[1][0] + " | " + meinBoard[1][1] + " | "+ meinBoard[1][2]);
         System.out.println("____________");
-        System.out.println(meinBoard [6] + " | " + meinBoard[7] + " | "+ meinBoard[8]);
+        System.out.println(meinBoard [2][0] + " | " + meinBoard[2][1] + " | "+ meinBoard[2][2]);
     }
 }

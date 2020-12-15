@@ -5,15 +5,9 @@ public class YouTube {
     public static void main(String[] args) {
         // Hier wird der Spieler gespeichert, der gerade am  Zug ist
 
-        int[] spielfeld = {1,2};
-
-        int[][] spielfeld_2d =
-                {
-                    {0,0,0},
-                    {0,0,0},
-                    {0,0,0},
-                };
-        int mitte = spielfeld_2d[2][1];
+        AsciiArt.printLeerzeilen(3);
+        AsciiArt.printTicTacToe2();
+        AsciiArt.printLeerzeilen(3);
 
         int turn = 0; //Spieler
         int winner = -1;

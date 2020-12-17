@@ -1,5 +1,5 @@
 package nico_code;
-//Hallo
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,9 +9,9 @@ public class Main {
 
         int[][] spielfeld_2d =
                 {
-                    {0,0,0},
-                    {0,0,0},
-                    {0,0,0},
+                        {0,0,0},
+                        {0,0,0},
+                        {0,0,0},
                 };
         int mitte = spielfeld_2d[2][1];
 
@@ -19,7 +19,7 @@ public class Main {
         int winner = -1;
         int[] board = new int[9]; //Anzahl der  Felder
         for (int i = 0; i < board.length; i++) {//for-Schleife
-             board [i]= -1;
+            board [i]= -1;
         }
         Player a = new Player(0);
         Player b = new Player(1);
@@ -31,17 +31,27 @@ public class Main {
 
         // Schleife läuft solange es keinen Gewinner gibt
         while(winner == -1){
-           //Spielfeld wird ausgegeben
-           printBoard(board);
+            //Spielfeld wird ausgegeben
+            printBoard(board);
 
-           int turnField = players[turn].getTurn();
-           if (a.validateTurn(board, turnField)){
-               board[turnField] = players[turn].number;
-               turn = (turn + 1) % 2;
-           }
+            int turnField = players[turn].getTurn();
+            if (a.validateTurn(board, turnField)){
+                board[turnField] = players[turn].number;
+                turn = (turn + 1) % 2;
+            }
             winner = checkWinner(board);
+
+
         }
-        System.out.println("Herzlichen Glückwunsch, Spieler" + winner + " Du hast gewonnen!");
+        if(winner== 3) {
+            System.out.println("Unentschieden!");
+
+        }
+        else {
+            System.out.println("Herzlichen Glückwunsch, Spieler" + winner + " Du hast gewonnen!");
+        }
+
+
         //printBoard(board);
     }
 
@@ -71,9 +81,20 @@ public class Main {
         else if (board[2] == board [5] && board[2] == board [8] && board [0]!= -1){
             winner = board[2];
         }
-        else{
-            winner = -1;
+        else     {
+            for (int i = 0; i < board.length; i++) { //for-Schleife
+                board [i]= -1;
+                if(board[i] == -1) {
+                    winner=-1;
+                }
+                else {
+                    winner = 3;
+                }
+            }
+
         }
+
+
         return winner;
     }
 
@@ -84,4 +105,6 @@ public class Main {
         System.out.println("____________");
         System.out.println(meinBoard [6] + " | " + meinBoard[7] + " | "+ meinBoard[8]);
     }
+
+
 }

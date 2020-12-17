@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class TTTFrame extends JFrame {
+    //testkommentar
     Icon i_o, i_x;
     int page = 0;
     JLabel[] a_label = new JLabel[4];

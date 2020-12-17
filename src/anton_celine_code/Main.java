@@ -4,17 +4,21 @@ public class Main {
 
     public static void main(String[] args) {
         // Hier wird der Spieler gespeichert, der gerade am  Zug ist test ANton
- 
-
 
         int turn = 0; //Spieler
         int winner = -1;
-        int[][]  board = new int[3][3]; //3x3 Array
-        for (int i = 0; i < board.length; i++) {//for-Schleife
-            for (int j = 0; j < board[i].length ; j++) {//for-Schleife
+
+        // Spielfeld erstellen
+        int[][]  board = new int[3][3];
+
+        // Spielfeld mit leeren Feldern befüllen
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length ; j++) {
                 board[i][j] = -1;
            }
         }
+
+        // 2 Spieler erstellen
         Player a = new Player(0);
         Player b = new Player(1);
 

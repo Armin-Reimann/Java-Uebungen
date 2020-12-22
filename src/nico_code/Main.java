@@ -3,6 +3,18 @@ package nico_code;
 public class Main {
 
     public static void main(String[] args) {
+        // Bla
+
+        int[] spielfeld = {0,0,0,0,0,0,0,0,0};
+
+        int[][] spielfeld_2d =
+                {
+                        {0,0,0},
+                        {0,0,0},
+                        {0,0,0},
+                };
+        int mitte = spielfeld_2d[2][1];
+
         int turn = 0; //Spieler
         int winner = -1;
 
@@ -72,15 +84,17 @@ public class Main {
             winner = board[2];
         }
         else     {
-            for (int j : board) { //for-Schleife
-                System.out.println(j);
-                if (j == -1) {
+            for (int i = 0; i < board.length; i++) { //for-Schleife
+                System.out.println(board[i]);
+                if(board[i] == -1) {
                     winner = -1;
                     break;
-                } else {
+                }
+                else {
                     winner = 3;
                 }
             }
+
         }
         return winner;
     }

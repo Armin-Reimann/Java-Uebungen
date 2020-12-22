@@ -3,11 +3,21 @@ package anton_celine_code;
 import java.util.Scanner;
 
 public class Player {
-    int number;
-    Scanner scanner = new Scanner(System.in);
+    protected int number;
+    protected String zeichen;
+    protected Scanner scanner = new Scanner(System.in);
 
     public Player(int number){
         this.number = number;
+        if(number==0) {
+            this.zeichen= "O";
+        }else if (number==1){
+            this.zeichen="X";
+        }
+    }
+
+    public String getZeichen() {
+        return this.zeichen;
     }
 
     public int[] getTurn(){
@@ -57,7 +67,7 @@ public class Player {
 
 
 
-    public boolean validateTurn(int [][] board, int[] turn){
-        return board[turn[0]][turn[1]] == -1;
+    public boolean validateTurn(String [][] board, int[] turn){
+        return board[turn[0]][turn[1]].equals("-");
     }
 }

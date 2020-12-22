@@ -49,6 +49,7 @@ public class Main {
     }
     public static String checkWinner (String [][] board) {
         String winner = "-";
+        boolean stopp = false;
         if(board[0][0].equals(board[0][1]) && board[0][0].equals(board[0][2]) && !board[0][0].equals("-")){
             winner = board[0][0];
         }else if(board[1][0].equals(board[1][1]) && board[1][0].equals(board[1][2]) && board[1][0].equals("-")){
@@ -69,15 +70,21 @@ public class Main {
         }else {
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board[i].length; j++) {
+                    System.out.println(board[i][j]);
                     if(board[i][j].equals("-")) {
                         winner = "-";
+                        stopp = true;
                         break;
                     }else {
                         winner = "F";
                     }
                 }
+                if (stopp){
+                    break;
+                }
             }
         }
+        System.out.println(winner);
         return winner;
     }
 

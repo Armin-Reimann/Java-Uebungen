@@ -66,18 +66,18 @@ public class Main {
             winner = board[0][0];
         }else if(board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2] != -1){
             winner = board[0][2];
-        }else     {
-            for (int j : board) { //for-Schleife
-                System.out.println(j);
-                if (j == -1) {
-                    winner = -1;
-                    break;
-                } else {
-                    winner = 3;
+        }else {
+            for (int i = 0; i < board.length; i++) {
+                for (int j = 0; j < board[i].length; j++) {
+                    if(board[i][j] == -1) {
+                        winner = -1;
+                        break;
+                    }else {
+                        winner = 3;
+                    }
                 }
             }
-        }
-        return winner;
+        }        return winner;
     }
 
     public static void printBoard(int [][] meinBoard){

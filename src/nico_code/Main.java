@@ -3,20 +3,9 @@ package nico_code;
 public class Main {
 
     public static void main(String[] args) {
-        // Bla
-
-        int[] spielfeld = {0,0,0,0,0,0,0,0,0};
-
-        int[][] spielfeld_2d =
-                {
-                        {0,0,0},
-                        {0,0,0},
-                        {0,0,0},
-                };
-        int mitte = spielfeld_2d[2][1];
-
         int turn = 0; //Spieler
         int winner = -1;
+
         int[] board = new int[9]; //Anzahl der  Felder
         for (int i = 0; i < board.length; i++) {//for-Schleife
             board [i]= -1;
@@ -43,6 +32,7 @@ public class Main {
 
 
         }
+        printBoard(board);
         if(winner== 3) {
             System.out.println("Unentschieden!");
 
@@ -82,19 +72,16 @@ public class Main {
             winner = board[2];
         }
         else     {
-            for (int i = 0; i < board.length; i++) { //for-Schleife
-                board [i]= -1;
-                if(board[i] == -1) {
-                    winner=-1;
-                }
-                else {
+            for (int j : board) { //for-Schleife
+                System.out.println(j);
+                if (j == -1) {
+                    winner = -1;
+                    break;
+                } else {
                     winner = 3;
                 }
             }
-
         }
-
-
         return winner;
     }
 

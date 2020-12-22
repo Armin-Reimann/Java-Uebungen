@@ -9,13 +9,13 @@ public class Main {
         int winner = -1;
 
         // Spielfeld erstellen
-        int[][]  board = new int[3][3];
+        int[][] board = new int[3][3];
 
         // Spielfeld mit leeren Feldern befüllen
         for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length ; j++) {
+            for (int j = 0; j < board[i].length; j++) {
                 board[i][j] = -1;
-           }
+            }
         }
 
         // 2 Spieler erstellen
@@ -24,25 +24,29 @@ public class Main {
 
         // Player-Array mit 2 Feldern
         Player[] players = new Player[2];
-        players[0]= a;
-        players[1]= b;
+        players[0] = a;
+        players[1] = b;
 
         // Schleife läuft solange es keinen Gewinner gibt
-        while(winner == -1){
-           //Spielfeld wird ausgegeben
-           printBoard(board);
+        while (winner == -1) {
+            //Spielfeld wird ausgegeben
+            printBoard(board);
 
-           int[] turnField = players[turn].getTurn();
-           if (a.validateTurn(board, turnField)){
-               board[turnField[0]][turnField[1]] = players[turn].number;
-               turn = (turn + 1) % 2;
-           }
+            int[] turnField = players[turn].getTurn();
+            if (a.validateTurn(board, turnField)) {
+                board[turnField[0]][turnField[1]] = players[turn].number;
+                turn = (turn + 1) % 2;
+            }
             winner = checkWinner(board);
         }
-        System.out.println("Herzlichen Glückwunsch, Spieler" + winner + " Du hast gewonnen!");
         printBoard(board);
-    }
+        if (winner == 3) {
+            System.out.println("Unentschieden!");
 
+        } else {
+            System.out.println("Herzlichen Glückwunsch, Spieler" + winner + " Du hast gewonnen!");
+        }
+    }
     public static int checkWinner (int [][] board) {
         int winner = -1;
         if(board[0][0] == board[0][1] && board[0][0] == board[0][2] && board[0][0] != -1){
@@ -62,8 +66,16 @@ public class Main {
             winner = board[0][0];
         }else if(board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2] != -1){
             winner = board[0][2];
-        }else{
-            winner = -1;
+        }else     {
+            for (int j : board) { //for-Schleife
+                System.out.println(j);
+                if (j == -1) {
+                    winner = -1;
+                    break;
+                } else {
+                    winner = 3;
+                }
+            }
         }
         return winner;
     }

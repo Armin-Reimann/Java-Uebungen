@@ -1,4 +1,4 @@
-package anton_celine_code;
+package syntaxerror;
 
 import java.util.Scanner;
 

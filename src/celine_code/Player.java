@@ -1,4 +1,4 @@
-package nico_code;
+package celine_code;
 
 import java.util.Scanner;
 

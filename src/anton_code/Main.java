@@ -1,4 +1,4 @@
-package syntaxerror;
+package anton_code;
 
 public class Main {
 

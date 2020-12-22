@@ -1,4 +1,4 @@
-package nico_code;
+package anton_code;
 
 import java.util.Scanner;
 

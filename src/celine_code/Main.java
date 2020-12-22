@@ -1,4 +1,4 @@
-package anton_celine_code;
+package celine_code;
 
 public class Main {
 

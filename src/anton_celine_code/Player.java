@@ -9,15 +9,15 @@ public class Player {
 
     public Player(int number){
         this.number = number;
-        if(number==0) {
-            this.zeichen= "O";
-        }else if (number==1){
-            this.zeichen="X";
+        if(number == 0) {
+            zeichen = "O";
+        }else if (number == 1){
+            zeichen = "X";
         }
     }
 
     public String getZeichen() {
-        return this.zeichen;
+        return zeichen;
     }
 
     public int[] getTurn(){

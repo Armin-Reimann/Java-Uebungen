@@ -27,6 +27,8 @@ public class Main {
         players[0] = a;
         players[1] = b;
 
+        a.setName();
+        b.setName();
         // Schleife läuft solange es keinen Gewinner gibt
         while (winner.equals("-")) {
             //Spielfeld wird ausgegeben
@@ -44,30 +46,39 @@ public class Main {
             System.out.println("Unentschieden!");
 
         } else {
-            System.out.println("Herzlichen Glückwunsch, Spieler" + winner + " Du hast gewonnen!");
+            if (a.getZeichen().equals(winner)) {
+                System.out.println("Herzlichen Glückwunsch, " + a.getName() + " Du hast gewonnen!");
+            } else {
+                System.out.println("Herzlichen Glückwunsch, " + b.getName() + " Du hast gewonnen!");
+
+            }
+
         }
     }
     public static String checkWinner (String [][] board) {
         String winner = "-";
         boolean stopp = false;
+        //waagerecht
         if(board[0][0].equals(board[0][1]) && board[0][0].equals(board[0][2]) && !board[0][0].equals("-")){
             winner = board[0][0];
-        }else if(board[1][0].equals(board[1][1]) && board[1][0].equals(board[1][2]) && board[1][0].equals("-")){
+        }else if(board[1][0].equals(board[1][1]) && board[1][0].equals(board[1][2]) && !board[1][0].equals("-")){
             winner = board[1][0];
-        }else if(board[2][0].equals(board[2][1]) && board[2][0].equals(board[2][2]) && board[2][0].equals("-")){
+        }else if(board[2][0].equals(board[2][1]) && board[2][0].equals(board[2][2]) && !board[2][0].equals("-")){
             winner = board[2][0];
             //senkrecht
-        }else if(board[0][0].equals(board[1][0]) && board[0][0].equals(board[2][0]) && board[0][0].equals("-")){
+        }else if(board[0][0].equals(board[1][0]) && board[0][0].equals(board[2][0]) && !board[0][0].equals("-")){
             winner = board[0][0];
-        }else if(board[0][1].equals(board[1][1]) && board[0][1].equals(board[2][1]) && board[0][1].equals("-")){
+        }else if(board[0][1].equals(board[1][1]) && board[0][1].equals(board[2][1]) && !board[0][1].equals("-")){
             winner = board[0][1];
-        }else if(board[0][2].equals(board[1][2]) && board[0][2].equals(board[2][2]) && board[0][2].equals("-")){
+        }else if(board[0][2].equals(board[1][2]) && board[0][2].equals(board[2][2]) && !board[0][2].equals("-")){
             winner = board[0][2];
-        }else if(board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]) && board[0][0].equals("-")){
+            //diagonal
+        }else if(board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]) && !board[0][0].equals("-")){
             winner = board[0][0];
-        }else if(board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0]) && board[0][2].equals("-")){
+        }else if(board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0]) && !board[0][2].equals("-")){
             winner = board[0][2];
         }else {
+
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board[i].length; j++) {
                     System.out.println(board[i][j]);
@@ -101,19 +112,4 @@ public class Main {
         System.out.println("   | |                             | |");
     }
 
-    public static void ascii () {
-        System.out.println(" __| |____________________________________________| |__");
-        System.out.println("(__   ____________________________________________   __)");
-        System.out.println("   | |                                            | |");
-        System.out.println("   | |                                            | |");
-        System.out.println("   | |                                            | |");
-        System.out.println("   | |                                            | |");
-        System.out.println("   | |                                            | |");
-        System.out.println("___| |____________________________________________| |__");
-        System.out.println("(__   ____________________________________________   __)");
-        System.out.println("   | |                                            | |");
-
-
-
-    }
 }

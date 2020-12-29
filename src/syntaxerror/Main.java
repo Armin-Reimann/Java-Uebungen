@@ -50,22 +50,24 @@ public class Main {
     public static String checkWinner (String [][] board) {
         String winner = "-";
         boolean stopp = false;
+        //waagerecht
         if(board[0][0].equals(board[0][1]) && board[0][0].equals(board[0][2]) && !board[0][0].equals("-")){
             winner = board[0][0];
-        }else if(board[1][0].equals(board[1][1]) && board[1][0].equals(board[1][2]) && board[1][0].equals("-")){
+        }else if(board[1][0].equals(board[1][1]) && board[1][0].equals(board[1][2]) && !board[1][0].equals("-")){
             winner = board[1][0];
-        }else if(board[2][0].equals(board[2][1]) && board[2][0].equals(board[2][2]) && board[2][0].equals("-")){
+        }else if(board[2][0].equals(board[2][1]) && board[2][0].equals(board[2][2]) && !board[2][0].equals("-")){
             winner = board[2][0];
             //senkrecht
-        }else if(board[0][0].equals(board[1][0]) && board[0][0].equals(board[2][0]) && board[0][0].equals("-")){
+        }else if(board[0][0].equals(board[1][0]) && board[0][0].equals(board[2][0]) && !board[0][0].equals("-")){
             winner = board[0][0];
-        }else if(board[0][1].equals(board[1][1]) && board[0][1].equals(board[2][1]) && board[0][1].equals("-")){
+        }else if(board[0][1].equals(board[1][1]) && board[0][1].equals(board[2][1]) && !board[0][1].equals("-")){
             winner = board[0][1];
-        }else if(board[0][2].equals(board[1][2]) && board[0][2].equals(board[2][2]) && board[0][2].equals("-")){
+        }else if(board[0][2].equals(board[1][2]) && board[0][2].equals(board[2][2]) && !board[0][2].equals("-")){
             winner = board[0][2];
-        }else if(board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]) && board[0][0].equals("-")){
+            //diagonal
+        }else if(board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]) && !board[0][0].equals("-")){
             winner = board[0][0];
-        }else if(board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0]) && board[0][2].equals("-")){
+        }else if(board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0]) && !board[0][2].equals("-")){
             winner = board[0][2];
         }else {
             for (int i = 0; i < board.length; i++) {
@@ -89,10 +91,15 @@ public class Main {
     }
 
     public static void printBoard(String [][] meinBoard){
-        System.out.println(meinBoard[0][0] + " | " + meinBoard[0][1] + " | "+ meinBoard[0][2]);
-        System.out.println("____________");
-        System.out.println(meinBoard[1][0] + " | " + meinBoard[1][1] + " | "+ meinBoard[1][2]);
-        System.out.println("____________");
-        System.out.println(meinBoard [2][0] + " | " + meinBoard[2][1] + " | "+ meinBoard[2][2]);
+        System.out.println(" __| |_____________________________| |__");
+        System.out.println("(__   _____________________________   __)");
+        System.out.println("   | |" + "   " + meinBoard[0][0]+ "    " + " | " + "    " + meinBoard[0][1] +  "    " + " | " + meinBoard[0][2] + "     " + "| |");
+        System.out.println("   | |" + " " + "___________________________" + " " + "| |");
+        System.out.println("   | |"+ "   " + meinBoard[1][0] + "    " + " | " + "    " + meinBoard[1][1] + "    " + " | " + meinBoard[1][2] + "     " + "| |");
+        System.out.println("   | |" + " " + "___________________________" + " " + "| |");
+        System.out.println("   | |" + "   " + meinBoard [2][0] + "    " + " | " + "    " + meinBoard[2][1] + "    " + " | " + meinBoard[2][2] + "     "  + "| |");
+        System.out.println(" __| |_____________________________| |__");
+        System.out.println("(__   _____________________________   __)");
+        System.out.println("   | |                             | |");
     }
 }

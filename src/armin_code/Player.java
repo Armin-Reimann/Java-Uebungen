@@ -3,21 +3,31 @@ package armin_code;
 import java.util.Scanner;
 
 public class Player {
-    int number;
-    Scanner scanner = new Scanner(System.in);
+    protected int number;
+    protected String zeichen;
+    protected Scanner scanner = new Scanner(System.in);
 
     public Player(int number){
         this.number = number;
+        if(number == 0) {
+            zeichen = "O";
+        }else if (number == 1){
+            zeichen = "X";
+        }
+    }
+
+    public String getZeichen() {
+        return zeichen;
     }
 
     public int[] getTurn(){
-        System.out.println("Player" + number + " - du bist am Zug! ");
-        int input = scanner.nextInt();
-        if (input < 9 && input >= 0){
-            return getMapping(input);
-        }
-        System.out.println("Ungültige Eingabe. Bitte nochmal probieren");
-        return getTurn();
+       System.out.println("Player" + number + " - du bist am Zug! ");
+       int input = scanner.nextInt();
+       if (input < 9 && input >= 0){
+           return getMapping(input);
+       }
+       System.out.println("Ungültige Eingabe. Bitte nochmal probieren");
+       return getTurn();
     }
 
     private int[] getMapping(int input){
@@ -57,7 +67,7 @@ public class Player {
 
 
 
-    public boolean validateTurn(int [][] board, int[] turn){
-        return board[turn[0]][turn[1]] == -1;
+    public boolean validateTurn(String [][] board, int[] turn){
+        return board[turn[0]][turn[1]].equals("-");
     }
 }

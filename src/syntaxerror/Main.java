@@ -91,10 +91,15 @@ public class Main {
     }
 
     public static void printBoard(String [][] meinBoard){
-        System.out.println(meinBoard[0][0] + " | " + meinBoard[0][1] + " | "+ meinBoard[0][2]);
-        System.out.println("____________");
-        System.out.println(meinBoard[1][0] + " | " + meinBoard[1][1] + " | "+ meinBoard[1][2]);
-        System.out.println("____________");
-        System.out.println(meinBoard [2][0] + " | " + meinBoard[2][1] + " | "+ meinBoard[2][2]);
+        System.out.println(" __| |_____________________________| |__");
+        System.out.println("(__   _____________________________   __)");
+        System.out.println("   | |" + "   " + meinBoard[0][0]+ "    " + " | " + "    " + meinBoard[0][1] +  "    " + " | " + meinBoard[0][2] + "     " + "| |");
+        System.out.println("   | |" + " " + "___________________________" + " " + "| |");
+        System.out.println("   | |"+ "   " + meinBoard[1][0] + "    " + " | " + "    " + meinBoard[1][1] + "    " + " | " + meinBoard[1][2] + "     " + "| |");
+        System.out.println("   | |" + " " + "___________________________" + " " + "| |");
+        System.out.println("   | |" + "   " + meinBoard [2][0] + "    " + " | " + "    " + meinBoard[2][1] + "    " + " | " + meinBoard[2][2] + "     "  + "| |");
+        System.out.println(" __| |_____________________________| |__");
+        System.out.println("(__   _____________________________   __)");
+        System.out.println("   | |                             | |");
     }
 }

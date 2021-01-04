@@ -34,13 +34,16 @@ public class Player {
         return zeichen;
     }
 
-    public int[] getTurn(){
+    public int[] getTurn(Board board){
        System.out.println(name + " - du bist am Zug! ");
        int input = scanner.nextInt();
        if (input < 9 && input >= 0){
            return Board.getMapping(input);
        }
        System.out.println("Ungültige Eingabe. Bitte nochmal probieren");
-       return getTurn();
+       return getTurn(board);
+    }
+
+    public void test() {
     }
 }

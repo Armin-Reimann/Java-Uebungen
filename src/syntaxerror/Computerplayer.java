@@ -1,8 +1,8 @@
-package armin_code;
+package syntaxerror;
 
 import java.util.Random;
 
-public class Computerplayer extends Player{
+public class Computerplayer extends Player {
     protected int schwierigkeit = 0;
 
     public Computerplayer(int number) {
@@ -17,10 +17,9 @@ public class Computerplayer extends Player{
     @Override
     public int[] getTurn(Board board) {
         System.out.println(name + " - du bist am Zug! ");
-        //todo hier vlt. eine random zeit einfügen
         try
         {
-            Thread.sleep(700);
+            Thread.sleep(1000);
         }
         catch(InterruptedException ex)
         {

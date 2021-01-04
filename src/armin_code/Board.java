@@ -7,6 +7,9 @@ public class Board {
         board = new String[3][3];
         befuellungSpielfeld();
     }
+    public Board(String[][] inhalt) {
+        board = inhalt;
+    }
 
     protected void befuellungSpielfeld() {
         for (int i = 0; i < board.length; i++) {
@@ -113,5 +116,26 @@ public class Board {
             System.out.println("Fehler in Klasse Board Methode getMapping()");
         }
         return rueckgabe;
+    }
+
+    public int[][] getFreieFelderarray(){
+        // z steht für zeile und s für spalte
+        int n_freieFelder = 0;
+        int[][] a_freieFelder = new int[9][2];
+
+        for (int z=0; z < board.length; z++){
+            for (int s=0; s < board[z].length; s++){
+                if(board[z][s].equals("-")){
+                    a_freieFelder[n_freieFelder][0]=z;
+                    a_freieFelder[n_freieFelder][1]=s;
+                    n_freieFelder++;
+                }
+            }
+        }
+        return a_freieFelder;
+    }
+
+    public String[][] getBoard(){
+        return board;
     }
 }

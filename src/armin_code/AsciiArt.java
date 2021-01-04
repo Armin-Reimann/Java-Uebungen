@@ -1,6 +1,20 @@
 package armin_code;
 
+import java.util.Scanner;
+
 public class AsciiArt {
+
+    public static void consoleLeeren(){
+        try {
+            if (System.getProperty("os.name").contains("Windows")){
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            }else {
+                Runtime.getRuntime().exec("clear");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 
     public static void printLeerzeilen(int anzahl){
         for (int i = 0; i < anzahl; i++) {
@@ -9,6 +23,8 @@ public class AsciiArt {
     }
 
     public static void printTicTacToe(){
+        Scanner scanner = new Scanner(System.in);
+        AsciiArt.printLeerzeilen(30);
         System.out.println("▄▄▄█████▓ ██▓ ▄████▄  ▄▄▄█████▓ ▄▄▄       ▄████▄  ▄▄▄█████▓ ▒█████  ▓█████ ");
         System.out.println("▓  ██▒ ▓▒▓██▒▒██▀ ▀█  ▓  ██▒ ▓▒▒████▄    ▒██▀ ▀█  ▓  ██▒ ▓▒▒██▒  ██▒▓█   ▀ ");
         System.out.println("▒ ▓██░ ▒░▒██▒▒▓█    ▄ ▒ ▓██░ ▒░▒██  ▀█▄  ▒▓█    ▄ ▒ ▓██░ ▒░▒██░  ██▒▒███   ");
@@ -17,7 +33,8 @@ public class AsciiArt {
         System.out.println("  ▒ ░░   ░▓  ░ ░▒ ▒  ░  ▒ ░░    ▒▒   ▓▒█░░ ░▒ ▒  ░  ▒ ░░   ░ ▒░▒░▒░ ░░ ▒░ ░");
         System.out.println("    ░     ▒ ░  ░  ▒        by Syntaxerror  ░  ▒       ░      ░ ▒ ▒░  ░ ░  ░");
         System.out.println("  ░       ▒ ░░          ░        ░   ▒   ░          ░      ░ ░ ░ ▒     ░   ");
-        System.out.println("                                     ░  ░░ ░                   ░ ░     ░  ░");
+        System.out.println("  Enter drücken zum fortfahren       ░  ░░ ░                   ░ ░     ░  ░");
+        scanner.nextLine();
     }
 
     public static void printTicTacToe2(){

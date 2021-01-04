@@ -20,8 +20,10 @@ public class Player {
 
 
     public void setName() {
+        AsciiArt.printLeerzeilen(30);
         System.out.println("Spieler " + (number+1) + ", geb deinen Namen ein:");
         name = scanner.next();
+        AsciiArt.printLeerzeilen(30);
     }
 
     public String getName () {

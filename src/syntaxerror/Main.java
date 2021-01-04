@@ -3,7 +3,6 @@ package syntaxerror;
 public class Main {
 
     public static void main(String[] args) {
-        // Hier wird der Spieler gespeichert, der gerade am  Zug ist test ANton
 
         int turn = 0; //Spieler
         String winner = "-";
@@ -20,8 +19,11 @@ public class Main {
         players[0] = a;
         players[1] = b;
 
+        AsciiArt.printTicTacToe();
+
         a.setName();
         b.setName();
+
         // Schleife läuft solange es keinen Gewinner gibt
         while (winner.equals("-")) {
             //Spielfeld wird ausgegeben
@@ -33,6 +35,7 @@ public class Main {
                 turn = (turn + 1) % 2;
             }
             winner = t.checkWinner();
+            AsciiArt.printLeerzeilen(30);
         }
         t.printBoard();
         if (winner.equals("F")) {

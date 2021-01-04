@@ -6,6 +6,7 @@ public class Board {
     char[][] board;
     int turn = 1;
     int winner = -2;
+
     public Board(char[][] inhalt){
         board = new char[3][3];
         if(inhalt[0][0] != 'f'){

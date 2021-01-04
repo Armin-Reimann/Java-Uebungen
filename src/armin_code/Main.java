@@ -51,6 +51,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         // 2 Spieler erstellen
         Player[] players = new Player[2];
+        AsciiArt.printLeerzeilen(30);
         System.out.println("Gegen den Computer spielen? (true/false)");
         boolean bot = scanner.nextBoolean();
         players[0] = new Player(0);

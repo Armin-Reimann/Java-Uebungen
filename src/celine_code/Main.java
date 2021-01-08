@@ -14,7 +14,7 @@ public class Main {
         int turn = 0; //Spieler
         String winner = "-";
 
-        // Spielfeld erstellen a
+        // Spielfeld erstellen
         syntaxerror.Board t = new Board();
 
         syntaxerror.AsciiArt.printTicTacToe();

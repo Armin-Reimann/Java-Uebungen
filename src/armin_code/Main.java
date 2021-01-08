@@ -6,6 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        AsciiArt.rgbRainbow();
+
         int turn = 0; //Spieler
         String winner = "-";
 

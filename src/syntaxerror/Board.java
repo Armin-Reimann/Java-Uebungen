@@ -23,7 +23,7 @@ public class Board {
         String winner = "-";
         boolean stopp = false;
         //waagerecht
-        if (board[0][0].equals(board[0][1]) && board[0][0].equals(board[0][2]) && !board[0][0].equals("-")) {
+        if (board[0][0].equals(board[0][1])        && board[0][0].equals(board[0][2]) && !board[0][0].equals("-")) {
             winner = board[0][0];
         } else if (board[1][0].equals(board[1][1]) && board[1][0].equals(board[1][2]) && !board[1][0].equals("-")) {
             winner = board[1][0];

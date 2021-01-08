@@ -1,5 +1,8 @@
 package nico_code;
 
+import syntaxerror.Board;
+import syntaxerror.Player;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,21 +12,14 @@ public class Main {
         String winner = "-";
 
         // Spielfeld erstellen
-        String[][] board = new String[3][3];
-
-        // Spielfeld mit leeren Feldern befüllen
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = "-";
-            }
-        }
+        Board t = new Board();
 
         // 2 Spieler erstellen
-        Player a = new Player(0);
-        Player b = new Player(1);
+        syntaxerror.Player a = new syntaxerror.Player(0);
+        syntaxerror.Player b = new syntaxerror.Player(1);
 
         // Player-Array mit 2 Feldern
-        Player[] players = new Player[2];
+        syntaxerror.Player[] players = new Player[2];
         players[0] = a;
         players[1] = b;
 
@@ -32,16 +28,16 @@ public class Main {
         // Schleife läuft solange es keinen Gewinner gibt
         while (winner.equals("-")) {
             //Spielfeld wird ausgegeben
-            printBoard(board);
+            t.printBoard();
 
             int[] turnField = players[turn].getTurn();
-            if (a.validateTurn(board, turnField)) {
-                board[turnField[0]][turnField[1]] = players[turn].getZeichen();
+            if (t.validateTurn(turnField)) {
+                t.setFeld(turnField, players[turn].getZeichen());
                 turn = (turn + 1) % 2;
             }
-            winner = checkWinner(board);
+            winner = t.checkWinner();
         }
-        printBoard(board);
+        t.printBoard();
         if (winner.equals("F")) {
             System.out.println("Unentschieden!");
 
@@ -55,61 +51,4 @@ public class Main {
 
         }
     }
-    public static String checkWinner (String [][] board) {
-        String winner = "-";
-        boolean stopp = false;
-        //waagerecht
-        if(board[0][0].equals(board[0][1]) && board[0][0].equals(board[0][2]) && !board[0][0].equals("-")){
-            winner = board[0][0];
-        }else if(board[1][0].equals(board[1][1]) && board[1][0].equals(board[1][2]) && !board[1][0].equals("-")){
-            winner = board[1][0];
-        }else if(board[2][0].equals(board[2][1]) && board[2][0].equals(board[2][2]) && !board[2][0].equals("-")){
-            winner = board[2][0];
-            //senkrecht
-        }else if(board[0][0].equals(board[1][0]) && board[0][0].equals(board[2][0]) && !board[0][0].equals("-")){
-            winner = board[0][0];
-        }else if(board[0][1].equals(board[1][1]) && board[0][1].equals(board[2][1]) && !board[0][1].equals("-")){
-            winner = board[0][1];
-        }else if(board[0][2].equals(board[1][2]) && board[0][2].equals(board[2][2]) && !board[0][2].equals("-")){
-            winner = board[0][2];
-            //diagonal
-        }else if(board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]) && !board[0][0].equals("-")){
-            winner = board[0][0];
-        }else if(board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0]) && !board[0][2].equals("-")){
-            winner = board[0][2];
-        }else {
-
-            for (int i = 0; i < board.length; i++) {
-                for (int j = 0; j < board[i].length; j++) {
-                    System.out.println(board[i][j]);
-                    if(board[i][j].equals("-")) {
-                        winner = "-";
-                        stopp = true;
-                        break;
-                    }else {
-                        winner = "F";
-                    }
-                }
-                if (stopp){
-                    break;
-                }
-            }
-        }
-        System.out.println(winner);
-        return winner;
-    }
-
-    public static void printBoard(String [][] meinBoard){
-        System.out.println(" __| |_____________________________| |__");
-        System.out.println("(__   _____________________________   __)");
-        System.out.println("   | |" + "   " + meinBoard[0][0]+ "    " + " | " + "    " + meinBoard[0][1] +  "    " + " | " + meinBoard[0][2] + "     " + "| |");
-        System.out.println("   | |" + " " + "___________________________" + " " + "| |");
-        System.out.println("   | |"+ "   " + meinBoard[1][0] + "    " + " | " + "    " + meinBoard[1][1] + "    " + " | " + meinBoard[1][2] + "     " + "| |");
-        System.out.println("   | |" + " " + "___________________________" + " " + "| |");
-        System.out.println("   | |" + "   " + meinBoard [2][0] + "    " + " | " + "    " + meinBoard[2][1] + "    " + " | " + meinBoard[2][2] + "     "  + "| |");
-        System.out.println(" __| |_____________________________| |__");
-        System.out.println("(__   _____________________________   __)");
-        System.out.println("   | |                             | |");
-    }
-
 }

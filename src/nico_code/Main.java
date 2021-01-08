@@ -30,7 +30,7 @@ public class Main {
             //Spielfeld wird ausgegeben
             t.printBoard();
 
-            int[] turnField = players[turn].getTurn();
+            int[] turnField = players[turn].getTurn(t);
             if (t.validateTurn(turnField)) {
                 t.setFeld(turnField, players[turn].getZeichen());
                 turn = (turn + 1) % 2;

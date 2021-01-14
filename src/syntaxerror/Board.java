@@ -1,6 +1,6 @@
 package syntaxerror;
 
-public class Board {
+public class Board implements Brett{
     protected String[][] board;
 
     public Board() {
@@ -62,6 +62,8 @@ public class Board {
         return winner;
     }
 
+
+
     public void printBoard() {
         System.out.println(" __| |_____________________________| |__");
         System.out.println("(__   _____________________________   __)");
@@ -78,6 +80,7 @@ public class Board {
     public boolean validateTurn(int[] turn) {
         return board[turn[0]][turn[1]].equals("-");
     }
+
 
     public void setFeld(int[] turnField, String zeichen) {
         board[turnField[0]][turnField[1]] = zeichen;

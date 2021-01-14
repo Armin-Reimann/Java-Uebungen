@@ -18,8 +18,8 @@ public class Computerplayer extends Player {
         name = "Computer";
     }
 
-    @Override
-    public int[] getTurn(syntaxerror.Board board) {
+
+    public int[] getTurn(celine_code.Board board) {
         System.out.println(name + " - du bist am Zug! ");
         //todo hier vlt. eine random zeit einfügen
         try

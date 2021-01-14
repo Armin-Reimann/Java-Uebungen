@@ -34,7 +34,7 @@ public class Player {
         return zeichen;
     }
 
-    public int[] getTurn(Board board){
+    public int[] getTurn(Brett board){
        System.out.println(name + " - du bist am Zug! ");
        int input = scanner.nextInt();
        if (input < 9 && input >= 0){

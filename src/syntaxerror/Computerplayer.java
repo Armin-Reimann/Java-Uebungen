@@ -20,7 +20,7 @@ public class Computerplayer extends Player {
      * @return Der Zug wird in Form eines Arrays mit zwei Einträgen (Zeile und Spalte) des Zuges zurückgegeben
      */
     @Override
-    public int[] getTurn(Board board) {
+    public int[] getTurn(Brett board) {
         System.out.println(name + " - du bist am Zug! ");
         //todo hier vlt. eine random zeit einfügen
         try

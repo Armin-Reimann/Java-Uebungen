@@ -10,7 +10,7 @@ public class Main {
         String winner = "-";
 
         // Spielfeld erstellen
-        Board t = new Board();
+        Brett t = new Board();
 
         AsciiArt.printTicTacToe();
 

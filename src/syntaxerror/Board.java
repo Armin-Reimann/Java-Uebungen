@@ -3,6 +3,7 @@ package syntaxerror;
 public class Board implements Brett{
     protected String[][] board;
 
+    /* Spielbrett als zweidimensionales Array wird erstellt und befüllt */
     public Board() {
         board = new String[3][3];
         befuellungSpielfeld();
@@ -10,7 +11,7 @@ public class Board implements Brett{
     public Board(String[][] inhalt) {
         board = inhalt;
     }
-
+    /* Hier wird das Array komplett durchlaufen und mit "-" befüllt */
     protected void befuellungSpielfeld() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -18,7 +19,11 @@ public class Board implements Brett{
             }
         }
     }
-
+    /** An dieser Stelle werden alle möglichen Spielzüge, die zum Sieg führen
+     * durchlaufen. Wenn alle Möglichkeiten nicht zutreffen, wird geprüft, ob
+     * es noch freie Felder gibt. Wenn dies der Fall ist bleibt der Gewinner
+     * "-", ansonsten geht das Spiel unentschieden aus.
+     */
     public String checkWinner() {
         String winner = "-";
         boolean stopp = false;
@@ -63,7 +68,7 @@ public class Board implements Brett{
     }
 
 
-
+    /* Das Spielfeld wird ausgegeben*/
     public void printBoard() {
         System.out.println(" __| |_____________________________| |__");
         System.out.println("(__   _____________________________   __)");
@@ -77,6 +82,7 @@ public class Board implements Brett{
         System.out.println("   | |                             | |");
     }
 
+    /* Prüft, ob man auf das Feld noch setzten darf oder es schon befüllt ist */
     public boolean validateTurn(int[] turn) {
         return board[turn[0]][turn[1]].equals("-");
     }

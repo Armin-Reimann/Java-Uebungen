@@ -87,11 +87,20 @@ public class Board implements Brett{
         return board[turn[0]][turn[1]].equals("-");
     }
 
-
+    /**
+     *
+     * @param turnField Bekommt die Daten, welches Zeichen gesetzt wurde in der Konsole und gibt dieses aus.
+     * @param zeichen Zahl von 0-8
+     */
     public void setFeld(int[] turnField, String zeichen) {
         board[turnField[0]][turnField[1]] = zeichen;
     }
 
+    /**
+     * Diese Funktion wandelt die Eingabe von 0-8 (neuen Möglichkeiten/ Felder) in eine Eingabe auf dem Feld um.
+     * @param input Zahl von 0-8
+     * @return Array mit der Größe 2
+     */
     public static int[] getMapping(int input) {
         int[] rueckgabe = new int[2];
         if (input == 0) {
@@ -127,6 +136,12 @@ public class Board implements Brett{
         return rueckgabe;
     }
 
+    /**
+     *
+     * @return Diese Funktion geht einmal das ganze Spielfeld durch
+     * und prüft welche Felder leer sind und ob dort gesetzt werden kann.
+     *  gibt die dann zwei Arrays zurück.
+     */
     public int[][] getFreieFelderarray(){
         // z steht für zeile und s für spalte
         int n_freieFelder = 0;

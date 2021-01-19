@@ -7,7 +7,9 @@ public class Board implements Brett{
     protected boolean schoenesSpielfeld;
     protected Scanner scanner = new Scanner(System.in);
 
-    /* Spielbrett als zweidimensionales Array wird erstellt und befüllt */
+    /**
+     * Spielbrett als zweidimensionales Array wird erstellt und befüllt
+     */
     public Board() {
         board = new String[3][3];
         befuellungSpielfeld();
@@ -15,7 +17,10 @@ public class Board implements Brett{
     public Board(String[][] inhalt) {
         board = inhalt;
     }
-    /* Hier wird das Array komplett durchlaufen und mit "-" befüllt */
+
+    /**
+     * Hier wird das Array komplett durchlaufen und mit "-" befüllt
+     */
     protected void befuellungSpielfeld() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -78,7 +83,9 @@ public class Board implements Brett{
     }
 
 
-    /* Das Spielfeld wird ausgegeben*/
+    /**
+     * je nachdem was man ausgewählt hat wird entweder ein schönes oder ein normales Spielfeld in der Konsole ausgegeben
+     */
     public void printBoard() {
         if(schoenesSpielfeld){
             System.out.println(" __| |_____________________________| |__");
@@ -101,13 +108,16 @@ public class Board implements Brett{
 
     }
 
-    /* Prüft, ob man auf das Feld noch setzten darf oder es schon befüllt ist */
+    /**
+     * Prüft, ob man auf das Feld noch setzten darf oder es schon befüllt ist
+     * @param turn array das "zeile" und "spalte" vom Spielfeld enthält
+     * @return boolean
+     */
     public boolean validateTurn(int[] turn) {
         return board[turn[0]][turn[1]].equals("-");
     }
 
     /**
-     *
      * @param turnField Bekommt die Daten, welches Zeichen gesetzt wurde in der Konsole und gibt dieses aus.
      * @param zeichen Zahl von 0-8
      */
@@ -156,10 +166,10 @@ public class Board implements Brett{
     }
 
     /**
-     *
-     * @return Diese Funktion geht einmal das ganze Spielfeld durch
+     * Diese Funktion geht einmal das ganze Spielfeld durch
      * und prüft welche Felder leer sind und ob dort gesetzt werden kann.
-     *  gibt die dann zwei Arrays zurück.
+     * gibt die dann zwei Arrays zurück.
+     * @return Array mit den freien Feldern
      */
     public int[][] getFreieFelderarray(){
         // z steht für zeile und s für spalte

@@ -13,8 +13,9 @@ public class Main {
         Brett t = new Board();
 
         AsciiArt.printTicTacToe();
+        AsciiArt.printLeerzeilen(30);
+
         t.setSpielfeldart();
-        AsciiArt.printTicTacToe();
 
         Player[] players = erstelleSpieler();
 

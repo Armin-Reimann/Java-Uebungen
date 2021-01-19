@@ -5,8 +5,7 @@ public interface Brett {
     String checkWinner();
     boolean validateTurn(int[] turn);
     void setFeld(int[] turnField, String zeichen);
-
     int[][] getFreieFelderarray();
-
     String[][] getBoard();
+    void setSpielfeldart();
 }

@@ -1,7 +1,11 @@
 package syntaxerror;
 
+import java.util.Scanner;
+
 public class Board implements Brett{
     protected String[][] board;
+    protected boolean schoenesSpielfeld;
+    protected Scanner scanner = new Scanner(System.in);
 
     /* Spielbrett als zweidimensionales Array wird erstellt und befüllt */
     public Board() {
@@ -19,6 +23,8 @@ public class Board implements Brett{
             }
         }
     }
+
+
 
 
     /**
@@ -74,16 +80,25 @@ public class Board implements Brett{
 
     /* Das Spielfeld wird ausgegeben*/
     public void printBoard() {
-        System.out.println(" __| |_____________________________| |__");
-        System.out.println("(__   _____________________________   __)");
-        System.out.println("   | |" + "   " + board[0][0] + "    " + " | " + "    " + board[0][1] + "    " + " | " + board[0][2] + "     " + "| |");
-        System.out.println("   | |" + " " + "___________________________" + " " + "| |");
-        System.out.println("   | |" + "   " + board[1][0] + "    " + " | " + "    " + board[1][1] + "    " + " | " + board[1][2] + "     " + "| |");
-        System.out.println("   | |" + " " + "___________________________" + " " + "| |");
-        System.out.println("   | |" + "   " + board[2][0] + "    " + " | " + "    " + board[2][1] + "    " + " | " + board[2][2] + "     " + "| |");
-        System.out.println(" __| |_____________________________| |__");
-        System.out.println("(__   _____________________________   __)");
-        System.out.println("   | |                             | |");
+        if(schoenesSpielfeld){
+            System.out.println(" __| |_____________________________| |__");
+            System.out.println("(__   _____________________________   __)");
+            System.out.println("   | |" + "   " + board[0][0] + "    " + " | " + "    " + board[0][1] + "    " + " | " + board[0][2] + "     " + "| |");
+            System.out.println("   | |" + " " + "___________________________" + " " + "| |");
+            System.out.println("   | |" + "   " + board[1][0] + "    " + " | " + "    " + board[1][1] + "    " + " | " + board[1][2] + "     " + "| |");
+            System.out.println("   | |" + " " + "___________________________" + " " + "| |");
+            System.out.println("   | |" + "   " + board[2][0] + "    " + " | " + "    " + board[2][1] + "    " + " | " + board[2][2] + "     " + "| |");
+            System.out.println(" __| |_____________________________| |__");
+            System.out.println("(__   _____________________________   __)");
+            System.out.println("   | |                             | |");
+        }else {
+            System.out.println(board[0][0] + " | " + board[0][1] + " | "+ board[0][2]);
+            System.out.println("____________");
+            System.out.println(board[1][0] + " | " + board[1][1] + " | "+ board[1][2]);
+            System.out.println("____________");
+            System.out.println(board [2][0] + " | " + board[2][1] + " | "+ board[2][2]);
+        }
+
     }
 
     /* Prüft, ob man auf das Feld noch setzten darf oder es schon befüllt ist */
@@ -150,5 +165,11 @@ public class Board implements Brett{
 
     public String[][] getBoard(){
         return board;
+    }
+
+    @Override
+    public void setSpielfeldart(){
+        System.out.println("Soll ein auf einem schönen Spielfeld gespielt werden? (true/false)");
+        this.schoenesSpielfeld = scanner.nextBoolean();
     }
 }

@@ -13,6 +13,8 @@ public class Main {
         Brett t = new Board();
 
         AsciiArt.printTicTacToe();
+        t.setSpielfeldart();
+        AsciiArt.printTicTacToe();
 
         Player[] players = erstelleSpieler();
 
@@ -41,9 +43,7 @@ public class Main {
                 System.out.println("Herzlichen Glückwunsch, " + players[0].getName() + " Du hast gewonnen!");
             } else {
                 System.out.println("Herzlichen Glückwunsch, " + players[1].getName() + " Du hast gewonnen!");
-
             }
-
         }
     }
 

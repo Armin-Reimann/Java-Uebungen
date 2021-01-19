@@ -19,10 +19,14 @@ public class Board implements Brett{
             }
         }
     }
-    /** An dieser Stelle werden alle möglichen Spielzüge, die zum Sieg führen
+
+
+    /**
+     * An dieser Stelle werden alle möglichen Gewinnreihen
      * durchlaufen. Wenn alle Möglichkeiten nicht zutreffen, wird geprüft, ob
      * es noch freie Felder gibt. Wenn dies der Fall ist bleibt der Gewinner
      * "-", ansonsten geht das Spiel unentschieden aus.
+     * @return Zeichen vom Gewinner
      */
     public String checkWinner() {
         String winner = "-";

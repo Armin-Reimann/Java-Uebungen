@@ -34,7 +34,7 @@ public class AsciiArt {
 
     public static void printTicTacToe(){
         Scanner scanner = new Scanner(System.in);
-        armin_code.AsciiArt.printLeerzeilen(30);
+        AsciiArt.printLeerzeilen(30);
         System.out.println(ANSI_RED+"▄▄▄█████▓ ██▓ ▄████▄ "+ANSI_GREEN+" ▄▄▄█████▓ ▄▄▄       ▄████▄  "+ANSI_BLUE+"▄▄▄█████▓ ▒█████  ▓█████ "+ANSI_RESET);
         System.out.println(ANSI_RED+"▓  ██▒ ▓▒▓██▒▒██▀ ▀█ "+ANSI_GREEN+" ▓  ██▒ ▓▒▒████▄    ▒██▀ ▀█  "+ANSI_BLUE+"▓  ██▒ ▓▒▒██▒  ██▒▓█   ▀ "+ANSI_RESET);
         System.out.println(ANSI_RED+"▒ ▓██░ ▒░▒██▒▒▓█    ▄"+ANSI_GREEN+" ▒ ▓██░ ▒░▒██  ▀█▄  ▒▓█    ▄ "+ANSI_BLUE+"▒ ▓██░ ▒░▒██░  ██▒▒███   "+ANSI_RESET);

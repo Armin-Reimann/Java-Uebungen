@@ -48,6 +48,11 @@ public class Main {
         }
     }
 
+    /**
+     * Spieler werden erstellt
+     * Auswahl zwischen Computerplayer oder Humanplayer
+     * @return
+     */
     public static Player[] erstelleSpieler(){
         Scanner scanner = new Scanner(System.in);
         // 2 Spieler erstellen

@@ -68,7 +68,6 @@ public class Computerplayer extends Player {
                 if (board[i][j].equals("-")){
                     board[i][j] = "X";
                     score = minimax(board, 0, false);
-//                    System.out.println("score:"+score);
                     board[i][j] = "-";
                     if(score > bestScore){
                         bestScore = score;

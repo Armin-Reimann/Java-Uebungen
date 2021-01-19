@@ -64,7 +64,7 @@ public class Board implements Brett{
         } else {
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board[i].length; j++) {
-                    System.out.println(board[i][j]);
+//                    System.out.println(board[i][j]);
                     if (board[i][j].equals("-")) {
                         winner = "-";
                         stopp = true;
@@ -78,7 +78,6 @@ public class Board implements Brett{
                 }
             }
         }
-        System.out.println(winner);
         return winner;
     }
 
@@ -195,6 +194,8 @@ public class Board implements Brett{
     @Override
     public void setSpielfeldart(){
         System.out.println("Soll ein auf einem schönen Spielfeld gespielt werden? (true/false)");
-        this.schoenesSpielfeld = scanner.nextBoolean();
+        boolean tmpSchoenesSpielfeld;
+        tmpSchoenesSpielfeld = scanner.nextBoolean();
+        this.schoenesSpielfeld = tmpSchoenesSpielfeld;
     }
 }

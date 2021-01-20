@@ -6,15 +6,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        AsciiArt.rgbRainbow();
-
         int turn = 0; //Spieler
         String winner = "-";
 
         // Spielfeld erstellen
-        Board t = new Board();
+        Brett t = new Board();
 
         AsciiArt.printTicTacToe();
+        AsciiArt.printLeerzeilen(30);
+
+        t.setSpielfeldart();
 
         Player[] players = erstelleSpieler();
 
@@ -43,12 +44,15 @@ public class Main {
                 System.out.println("Herzlichen Glückwunsch, " + players[0].getName() + " Du hast gewonnen!");
             } else {
                 System.out.println("Herzlichen Glückwunsch, " + players[1].getName() + " Du hast gewonnen!");
-
             }
-
         }
     }
 
+    /**
+     * Spieler werden erstellt
+     * Auswahl zwischen Computerplayer oder Humanplayer
+     * @return
+     */
     public static Player[] erstelleSpieler(){
         Scanner scanner = new Scanner(System.in);
         // 2 Spieler erstellen

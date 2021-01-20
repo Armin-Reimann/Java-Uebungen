@@ -3,7 +3,6 @@ package armin_code;
 import java.util.Scanner;
 
 public class AsciiArt {
-    //test
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -14,7 +13,6 @@ public class AsciiArt {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
-
 
     public static void consoleLeeren(){
         try {
@@ -32,94 +30,6 @@ public class AsciiArt {
         for (int i = 0; i < anzahl; i++) {
             System.out.println(" ");
         }
-    }
-
-    public static String[] getAnsiColors(){
-        String code;
-        String[] farben = new String[256];
-        int zahler = 0;
-        for (int i = 0; i < 16; i++) {
-            for (int j = 0; j < 16; j++) {
-                code = String.valueOf(i*16+j);
-                farben[zahler] = "\u001b[38;5;"+code+"m";
-                zahler++;
-            }
-        }
-        return farben;
-    }
-
-    public static void rgbRainbow(){
-//        String[] farben = new String[6];
-//        farben[0] = ANSI_RED;
-//        farben[1] = ANSI_GREEN;
-//        farben[2] = ANSI_YELLOW;
-//        farben[3] = ANSI_BLUE;
-//        farben[4] = ANSI_PURPLE;
-//        farben[5] = ANSI_CYAN;
-
-
-        String[] farben = AsciiArt.getAnsiColors();
-
-
-
-//        for (int j = 0; j < farben.length; j++) {
-//            System.out.println(farben[j]+ "FARBE: "+ j);
-//        }
-//
-//        int rechnung = 0;
-//        while (true){
-//            rechnung = rechnung+1;
-//        }
-
-
-        String text = "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
-        char[] textarray = text.toCharArray();
-
-        int farblaenge = 0;
-
-        int farbzaehler = 52;
-        int farbzaehler2 = 52;
-
-        while (true){
-            for (int i = 0; i < text.length(); i++) {
-                if(farbzaehler > 57){
-                    farbzaehler = 52;
-                }
-                System.out.print(farben[farbzaehler]+textarray[i]);
-                farblaenge++;
-                farbzaehler++;
-                if(farblaenge == 1){
-
-                    farblaenge = 0;
-                }
-
-            }
-            System.out.println();
-            for (int i = 0; i < text.length(); i++) {
-                if(farbzaehler2 > 57){
-                    farbzaehler2 = 52;
-                }
-                System.out.print(farben[farbzaehler2]+textarray[i]);
-//                farblaenge++;
-                farbzaehler2++;
-//                if(farblaenge == 1){
-//
-//                    farblaenge = 0;
-//                }
-
-            }
-            try
-            {
-                Thread.sleep(300);
-            }
-            catch(InterruptedException ex)
-            {
-                Thread.currentThread().interrupt();
-            }
-            farbzaehler++;
-            AsciiArt.printLeerzeilen(2);
-        }
-
     }
 
     public static void printTicTacToe(){

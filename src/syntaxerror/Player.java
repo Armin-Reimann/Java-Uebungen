@@ -2,10 +2,6 @@ package syntaxerror;
 
 import java.util.Scanner;
 
-/** Das Objekt Player wird erstellt und wenn der Spieler die Nummer 0 hat,
- * wird ihm das Zeichen "0" zugewiesen, wenn der Spieler die Nummer 1 hat,
- * wird ihm das Zeichen "X" zugewiesen.
- */
 public class Player {
     protected int number;
     protected String zeichen;
@@ -21,7 +17,6 @@ public class Player {
         }
 
     }
-
 
     public void setName() {
         AsciiArt.printLeerzeilen(30);
@@ -39,12 +34,12 @@ public class Player {
     }
 
     /** Dem aktuellem Spieler wird durch das System.out.println mittgeteilt,
-     * dass er am Zug ist. Anschließend folgt eine If-Abfrage. Sie liefter, wenn
+     * dass er am Zug ist. Anschließend folgt eine If-Abfrage. Sie liefert, wenn
      * der input kleiner als 9 und größer gleich 0 ist Board.getMapping zurück,
      * ansonsten gibt er die Meldung zurück, dass es sich um eine Ungültige Eingabe
      * handelt und man des nochmal versuchen soll.
-     * @param board
-     * @return
+     * @param board Spielfeld Objekt (Board Objekt)
+     * @return array das "zeile" und "spalte" des spielfelds enthält
      */
     public int[] getTurn(Brett board){
        System.out.println(name + " - du bist am Zug! ");
@@ -54,8 +49,5 @@ public class Player {
        }
        System.out.println("Ungültige Eingabe. Bitte nochmal probieren");
        return getTurn(board);
-    }
-
-    public void test() {
     }
 }

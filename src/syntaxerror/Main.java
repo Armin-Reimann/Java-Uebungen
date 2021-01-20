@@ -50,11 +50,10 @@ public class Main {
     /**
      * Spieler werden erstellt
      * Auswahl zwischen Computerplayer oder Humanplayer
-     * @return
+     * @return Array mit 2 Player Objekten
      */
     public static Player[] erstelleSpieler(){
         Scanner scanner = new Scanner(System.in);
-        // 2 Spieler erstellen
         Player[] players = new Player[2];
         AsciiArt.printLeerzeilen(30);
         System.out.println("Gegen den Computer spielen? (true/false)");

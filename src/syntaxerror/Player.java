@@ -15,7 +15,6 @@ public class Player {
         }else if (number == 1){
             zeichen = "X";
         }
-
     }
 
     public void setName() {

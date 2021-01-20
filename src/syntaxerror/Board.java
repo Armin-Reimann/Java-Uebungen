@@ -29,9 +29,6 @@ public class Board implements Brett{
         }
     }
 
-
-
-
     /**
      * An dieser Stelle werden alle möglichen Gewinnreihen
      * durchlaufen. Wenn alle Möglichkeiten nicht zutreffen, wird geprüft, ob
@@ -81,7 +78,6 @@ public class Board implements Brett{
         return winner;
     }
 
-
     /**
      * je nachdem was man ausgewählt hat wird entweder ein schönes oder ein normales Spielfeld in der Konsole ausgegeben
      */
@@ -104,7 +100,6 @@ public class Board implements Brett{
             System.out.println("____________");
             System.out.println(board [2][0] + " | " + board[2][1] + " | "+ board[2][2]);
         }
-
     }
 
     /**

@@ -6,13 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int turn = 0; //Spieler
+        int turn = 0;
         String winner = "-";
 
-        // Spielfeld erstellen
         Brett t = new Board();
 
-        AsciiArt.printTicTacToe2();
+        AsciiArt.printTicTacToe();
         AsciiArt.printLeerzeilen(30);
 
         t.setSpielfeldart();

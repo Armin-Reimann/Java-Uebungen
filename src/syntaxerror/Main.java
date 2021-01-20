@@ -12,7 +12,7 @@ public class Main {
         // Spielfeld erstellen
         Brett t = new Board();
 
-        AsciiArt.printTicTacToe();
+        AsciiArt.printTicTacToe2();
         AsciiArt.printLeerzeilen(30);
 
         t.setSpielfeldart();

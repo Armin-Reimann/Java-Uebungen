@@ -104,13 +104,11 @@ public class Computerplayer extends Player {
             return score;
         }
         if(isMaximazing){
-
             double bestScore = Double.NEGATIVE_INFINITY;
             for (int i = 0; i < 3; i++){
                 for (int j = 0; j < 3; j++){
                     if (board[i][j].equals("-")){
                         board[i][j] = "X";
-//                        Main.printBoard(board);
                         score = minimax(board, depth+1, false);
                         board[i][j] = "-";
                         bestScore = Math.max(score,bestScore);
@@ -124,7 +122,6 @@ public class Computerplayer extends Player {
                 for (int j = 0; j < 3; j++){
                     if (board[i][j].equals("-")){
                         board[i][j] = "O";
-//                        Main.printBoard(board);
                         score = minimax(board, depth+1, true);
                         board[i][j] = "-";
                         bestScore = Math.min(score, bestScore);
